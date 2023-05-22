@@ -28,6 +28,7 @@ import { NavbarComponent } from './view/navbar/navbar.component';
 import { SidebarAdminComponent } from './view/sidebar-admin/sidebar-admin.component';
 import { SidebarClientComponent } from './view/sidebar-client/sidebar-client.component';
 import { SidebarNutriComponent } from './view/sidebar-nutri/sidebar-nutri.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,25 @@ import { SidebarNutriComponent } from './view/sidebar-nutri/sidebar-nutri.compon
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot([{ path: '', component: HomeComponent }]),
+    ReactiveFormsModule,
+    RouterModule.forRoot([
+      { 
+        path: '', 
+        component: HomeComponent 
+      },
+      {
+        path: 'login-admin',
+        component: LoginAdminComponent,
+      },
+      {
+        path: 'login-nutri',
+        component: LoginNutriComponent,
+      },
+      {
+        path: 'login-client',
+        component: LoginClientComponent,
+      }
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent],
