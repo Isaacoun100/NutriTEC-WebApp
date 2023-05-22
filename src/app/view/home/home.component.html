@@ -1,33 +1,30 @@
 <body>
     <app-navbar></app-navbar>
+    
+    <div class="container col-xxl-8 px-4 py-2">
 
-      <div id="carouselExampleIndicators" class="carousel slide">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+
+        <div class="col-lg-6 center">
+          <img src="\assets\home_image.png" class="img-fluid" alt="NutriTEC Cover" width="400" height="400" loading="lazy">
         </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="/assets/facebook_cover_photo_2.png" class="d-block w-100" alt="...">
+
+        <div class="col-lg-6">
+
+          <h1 class="display-3 fw-bold lh-1 mb-3">Welcome to NutriTEC</h1>
+          <p class="lead">Achieve Wellness, One Bite at a Time</p>
+
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a href="/login-client" type="button" class="btn btn-primary btn-lg px-4 me-md-2">Client</a>
+            <a href="/login-nutri" type="button" class="btn btn-primary btn-lg px-4 me-md-2">Nutritionist</a>
+            <a href="/login-admin" type="button" class="btn btn-primary btn-lg px-4 me-md-2">Admin</a>
+
           </div>
-          <div class="carousel-item">
-            <img src="/assets/banner1.jpg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="/assets/banner2.jpg" class="d-block w-100" alt="...">
-          </div>
+
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
 
-    <app-footer></app-footer>
+    </div>
+    
 </body>
 
