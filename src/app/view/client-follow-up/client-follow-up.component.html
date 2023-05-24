@@ -1,1 +1,122 @@
-<p>client-follow-up works!</p>
+<body>
+    
+    <app-sidebar-nutri></app-sidebar-nutri>
+
+    <div class="container">
+
+        <div class="row p-4">
+
+            <h2> My Patients </h2>
+
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 py-2">
+
+                <form [formGroup]="clientForm" (ngSubmit)="loadClientInfo(clientForm.getRawValue())">
+
+                    <div class="row">
+
+                        <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 py-2">
+
+                            <select class="form-select" formControlName="id">
+                                <option [disabled]="true">Select Patient</option>
+                                <option *ngFor="let patient of patients" [ngValue]="patient['id']">
+                                    {{patient['name'] +" "+ patient['lastname_1'] +" "+ patient['lastname_2']}}
+                                </option>
+                            </select>
+
+                        </div>
+
+                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 py-2">
+
+                            <button class="btn btn-success" type="submit">Load Info</button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
+                    <div class="card cardColor">
+                        <div class="card-body">
+                            <h3> Breakfast </h3>
+                            {{patientDaily['breakfast']}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
+                    <div class="card cardColor">
+                        <div class="card-body">
+                            <h3> Snack (Morning)</h3>
+                            {{patientDaily['snack_morning']}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
+                    <div class="card cardColor">
+                        <div class="card-body">
+                            <h3> Lunch </h3>
+                            {{patientDaily['lunch']}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
+                    <div class="card cardColor">
+                        <div class="card-body">
+                            <h3> Snack (Afternoon) </h3>
+                            {{patientDaily['breakfast']}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
+                    <div class="card cardColor">
+                        <div class="card-body">
+                            <h3> Dinner </h3>
+                            {{patientDaily['dinner']}}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 py-2">
+
+                <form [formGroup]="commentForm" (ngSubmit)="commentClient(commentForm.getRawValue())">
+    
+                    <div class="row">
+    
+                        <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 py-2">
+    
+                            <input type="text" 
+                            class="form-control" 
+                            id="comment" 
+                            placeholder="Leave a comment"
+                            formControlName="comment">
+    
+                        </div>
+    
+                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 py-2">
+    
+                            <button class="btn btn-success" type="submit">Comment</button>
+    
+                        </div>
+    
+                    </div>
+    
+                </form>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</body>
