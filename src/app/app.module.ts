@@ -78,6 +78,42 @@ import { ReactiveFormsModule } from '@angular/forms';
       {
         path: 'login-client',
         component: LoginClientComponent,
+      },
+      {
+        path: 'register-client',
+        component: RegisterClientComponent,
+      },
+      {
+        path: 'add-nutri',
+        component: AddNutriComponent,
+      },
+      {
+        path: 'nutri-hub',
+        component: NutriHubComponent,
+      },
+      {
+        path: 'add-product',
+        component: AddProductComponent,
+      },
+      {
+        path: 'manage-dish',
+        component: ManageDishComponent,
+      },
+      {
+        path: 'patient-search',
+        component: SearchClientComponent,
+      },
+      {
+        path: 'assign-plan',
+        component: AssignPlanComponent,
+      },
+      {
+        path: 'create-plan',
+        component: CreatePlanComponent,
+      },
+      {
+        path: 'patient-follow-up',
+        component: ClientFollowUpComponent,
       }
     ]),
   ],
