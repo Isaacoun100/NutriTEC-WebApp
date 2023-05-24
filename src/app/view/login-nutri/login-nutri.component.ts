@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-nutri',
@@ -16,11 +17,17 @@ export class LoginNutriComponent {
       email: new FormControl('', { nonNullable: true }),
       password: new FormControl('', { nonNullable: true }),
     });
+
+    constructor( private router : Router ) { }
+
   
     /**
      * @description This method is used to login the admin
      * @param form 
      */
-    nutriLogin(form : any){}
+    nutriLogin(form : any){
+      console.log(form);
+      this.router.navigate(['/nutri-hub']);
+    }
 
 }

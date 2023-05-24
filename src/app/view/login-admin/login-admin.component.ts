@@ -21,6 +21,8 @@ export class LoginAdminComponent {
    * @description This method is used to login the admin
    * @param form 
    */
-  adminLogin(form : any){}
+  adminLogin(form : any){
+    console.log(form);
+  }
 
 }
