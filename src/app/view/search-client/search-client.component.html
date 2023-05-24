@@ -1,1 +1,74 @@
-<p>search-client works!</p>
+<body>
+
+    <app-sidebar-nutri></app-sidebar-nutri>
+
+    <div class="container">
+
+        <div class="row">
+    
+            
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 py-4">
+                
+                <form [formGroup]="searchForm" (ngSubmit)="searchPatient(searchForm.getRawValue())">
+    
+                    <div class="row">
+    
+                        <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+                
+                            <input type="text" 
+                            class="form-control" 
+                            id="name" 
+                            placeholder="Search by name"
+                            formControlName="name">
+    
+                        </div>
+    
+                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+    
+                            <button type="submit" class="btn btn-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                </svg>
+                                Search
+                            </button>
+    
+                        </div>
+    
+                    </div>
+    
+                </form>
+                    
+            </div>
+            
+                
+    
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 py-4">
+    
+                <ul class="list-group overflow-auto shadow" style="max-height: 272px;">
+            
+                    <div *ngFor="let patient of patients; let i=index">
+            
+                        <li class="list-group-item">
+            
+                            <h4>
+            
+                                <a (click)="assignPatient(patient['id'])">
+                                    <div>{{ patient['name'] + " " + patient['lastname_1'] + " " + patient['lastname_2']}}</div>
+                                </a>
+            
+                            </h4>
+                            
+                        </li>
+            
+                    </div>
+            
+                </ul>
+                
+            </div>
+    
+        </div>
+
+    </div>
+
+    
+</body>
