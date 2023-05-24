@@ -1,3 +1,4 @@
+import { nutri } from 'src/app/setValues';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./nutri-hub.component.scss']
 })
 export class NutriHubComponent {
+
+  nutri = nutri;
 
 }

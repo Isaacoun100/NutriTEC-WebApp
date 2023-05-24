@@ -1,1 +1,84 @@
-<p>nutri-hub works!</p>
+<body>
+    
+    <app-sidebar-nutri></app-sidebar-nutri>
+
+    <div class="container py-4">
+        
+        
+        <div class="row py-2">
+
+          <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 py-2 text-center">
+
+            <h2> Welcome back {{ ' '+nutri['name']+' ' }} {{ ' '+nutri['lastname_1']+' ' }} {{ ' '+nutri['lastname_2'] }}</h2>
+            
+        </div>
+
+        <div class="col-12">
+            <img class="profilep" src="{{nutri['photo']}}" alt="profile">
+        </div>
+
+          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 py-2">
+
+              <div class="card cardColor">
+                  <div class="card-body">
+                    <p class="card-text"> ID : {{ ' '+nutri['id']+' ' }} </p> 
+                  </div>
+                </div>
+
+          </div>
+
+          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 py-2">
+
+              <div class="card cardColor">
+                  <div class="card-body">
+                    <p class="card-text"> Email: {{ ' '+nutri['email']+' ' }} </p> 
+                  </div>
+                </div>
+
+          </div>
+
+          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 py-2">
+
+              <div class="card cardColor">
+                  <div class="card-body">
+                    <p class="card-text"> Address {{ ' '+nutri['address']+' ' }} </p> 
+                  </div>
+                </div>
+
+          </div>
+
+          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 py-2">
+
+              <div class="card cardColor">
+                  <div class="card-body">
+                    <p class="card-text"> Birth Date : {{ ' '+nutri['birth_date']+' ' }} </p> 
+                  </div>
+                </div>
+
+          </div>
+
+          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 py-2">
+
+              <div class="card cardColor">
+                  <div class="card-body">
+                    <p class="card-text"> Billing type: {{ ' '+nutri['billing_type']+' ' }} </p> 
+                  </div>
+                </div>
+
+          </div>
+          
+          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 py-2">
+
+              <div class="card cardColor">
+                  <div class="card-body">
+                    <p class="card-text"> Roll Name : {{ ' '+nutri['role_name']+' ' }} </p> 
+                  </div>
+                </div>
+
+            </div>
+            
+        </div>
+
+    </div>
+    
+</body>
