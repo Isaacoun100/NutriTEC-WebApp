@@ -52,3 +52,22 @@ export const patientDaily = {
     snack_afternoon: "Carrot sticks with hummus",
     dinner: "Salmon with steamed broccoli and brown rice"
 }
+
+export const plans = [
+    {
+        id: "1",
+        name: "Weight Loss"
+    },
+    {
+        id: "2",
+        name: "Weight Gain"
+    },
+    {
+        id: "3",
+        name: "Muscle Gain"
+    },
+    {
+        id: "4",
+        name: "Weight Maintenance"
+    }
+]
