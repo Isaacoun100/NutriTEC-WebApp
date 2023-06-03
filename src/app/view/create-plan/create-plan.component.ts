@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef  } from '@angular/core';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { mealTimes, products } from 'src/app/setValues';
 
 @Component({
   selector: 'app-create-plan',
@@ -6,5 +8,108 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-plan.component.scss']
 })
 export class CreatePlanComponent {
+
+  currentProduct = 0;
+  mealTimes = mealTimes;
+  products = products;
+
+  plans = [
+    new FormGroup({
+      barcode : new FormControl('', Validators.required),
+      size : new FormControl(0, Validators.required),
+      product : new FormControl('', Validators.required)
+    })];
+    
+    /**
+     * @description This is the form we use to store to search for a product.
+     * @version 1.0
+    */
+   searchForm = new FormGroup({
+     product : new FormControl('', Validators.required)
+    });
+    
+  // The meal_time should be individual for each dish
+  newPlan = new FormGroup({
+    plan_name : new FormControl('', Validators.required),
+    plan : new FormArray([
+      new FormGroup({
+        meal_time : new FormControl('', Validators.required),
+        size : new FormControl(0, Validators.required),
+        product : new FormControl('', Validators.required)
+      })
+    ])
+  });
+
+  sizeForm = new FormGroup({
+    sizeInput : new FormControl(0, Validators.required)
+  });
+
+  searchProduct( form : any) {
+    console.log(this.searchForm.value);
+  }
+
+  addPlan( form : any) {
+    console.log(this.newPlan.value);
+  }
+
+
+  addProduct(size : any, meal_type : any){
+
+    console.log(Number(size));
+
+    if(this.newPlan.controls['plan'].controls.at(0)?.controls['size'].value == 0){
+
+      console.log("Empty");
+
+      this.plans[0].controls['size'].setValue(Number(size));
+      this.plans[0].controls['product'].setValue( this.products[this.currentProduct].product_name );
+      this.plans[0].controls['barcode'].setValue( this.products[this.currentProduct].barcode );
+
+      this.newPlan.controls['plan'].at(0).controls['size'].setValue(Number(size));
+      this.newPlan.controls['plan'].at(0).controls['product'].setValue( this.products[this.currentProduct].product_name );
+      this.newPlan.controls['plan'].at(0).controls['meal_time'].setValue( meal_type.value );
+      
+    
+    }
+    else{
+
+      const insertPlan = new FormGroup({
+        size : new FormControl(0, Validators.required),
+        product : new FormControl('', Validators.required),
+        meal_time : new FormControl('', Validators.required)
+      });
+
+      insertPlan.controls['size'].setValue(Number(size));
+      insertPlan.controls['product'].setValue( this.products[this.currentProduct].product_name );
+      insertPlan.controls['meal_time'].setValue( meal_type.value );
+
+      this.newPlan.controls['plan'].push(insertPlan);
+
+      const listPlan = new FormGroup({
+        size : new FormControl(0, Validators.required),
+        product : new FormControl('', Validators.required),
+        barcode : new FormControl('', Validators.required)
+      });
+
+      listPlan.controls['size'].setValue(Number(size));
+      listPlan.controls['product'].setValue( this.products[this.currentProduct].product_name );
+      listPlan.controls['barcode'].setValue( this.products[this.currentProduct].barcode );
+
+      this.plans.push(listPlan);
+
+    }
+
+    this.sizeForm.controls['sizeInput'].setValue(0);
+
+    console.log(this.newPlan.getRawValue());
+
+  }
+
+
+  setCurrentProduct( index : number) {
+    console.log("Current product: ");
+    console.log(index);
+    this.currentProduct = index;
+  }
 
 }
