@@ -1,3 +1,4 @@
+import { paymentTypes } from './../../setValues';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -7,6 +8,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./add-nutri.component.scss']
 })
 export class AddNutriComponent {
+
+  paymentTypes = paymentTypes;
 
   /**
    * @description This is the form we use to store the data the user inputs.

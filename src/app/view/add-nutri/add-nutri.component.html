@@ -112,7 +112,7 @@
 
                             <label for="caloriesGoal">Photo</label>
 
-                            <input type="number" 
+                            <input type="string" 
                             class="form-control" 
                             id="caloriesGoal" 
                             formControlName="caloriesGoal">
@@ -136,12 +136,13 @@
 
                         <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
 
-                            <label for="nutriID">Nutritionist ID</label>
+                            <label for="paymentType">Payment Type</label>
     
-                            <input type="text" 
-                            class="form-control" 
-                            id="nutriID" 
-                            formControlName="nutriID">
+                            <select class="form-select" aria-label="Default select example">
+                                <option *ngFor="let paymentType of paymentTypes" [value]="paymentType">
+                                    {{ paymentType }}
+                                </option>
+                            </select>
                         
                         </div>
 
@@ -149,7 +150,7 @@
 
                     <div class="row py-2">
 
-                        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                             <label for="creditCard">Credit Card</label>
     
@@ -157,17 +158,6 @@
                             class="form-control" 
                             id="creditCard" 
                             formControlName="creditCard">
-                        
-                        </div>
-
-                        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-
-                            <label for="paymentType">Payment Type</label>
-    
-                            <input type="text" 
-                            class="form-control" 
-                            id="paymentType" 
-                            formControlName="paymentType">
                         
                         </div>
 
