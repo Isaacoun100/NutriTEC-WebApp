@@ -1,1 +1,76 @@
-<p>approved-products works!</p>
+<body>
+    
+    <app-sidebar-admin></app-sidebar-admin>
+
+    <div class="container py-4">
+
+        <div class="card">
+            <div class="card-body">
+              Select the name of the  product you would like to manage
+            </div>
+          </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Barcode</th>
+                        <th>Size</th>
+                        <th>Calcium</th>
+                        <th>Sodium</th>
+                        <th>Carbs</th>
+                        <th>Fat</th>
+                        <th>Calories</th>
+                        <th>Iron</th>
+                        <th>Protein</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let unnaprovedProduct of unnaprovedProducts; let i=index">
+                            <th data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="setCurrentProduct(i)" scope="row">
+                                {{ unnaprovedProduct['name'] }}
+                            </th>
+                            <td>{{ unnaprovedProduct['barcode'] }}</td>
+                            <td>{{ unnaprovedProduct['size'] }}</td>
+                            <td>{{ unnaprovedProduct['calcium'] }}</td>
+                            <td>{{ unnaprovedProduct['sodium'] }}</td>
+                            <td>{{ unnaprovedProduct['carbs'] }}</td>
+                            <td>{{ unnaprovedProduct['fat'] }}</td>
+                            <td>{{ unnaprovedProduct['calories'] }}</td>
+                            <td>{{ unnaprovedProduct['iron'] }}</td>
+                            <td>{{ unnaprovedProduct['protein'] }}</td>
+                        </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+
+</body>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">What would you like to do to this product</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 py-2 center">
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="approveProduct()">Approve</button>              
+                    </div>
+                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 py-2 center">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteProduct()">Delete</button>                  
+                    </div>
+                </div>
+            </div>               
+        </div>
+    </div>
+</div>
