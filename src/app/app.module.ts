@@ -69,51 +69,75 @@ import { ReactiveFormsModule } from '@angular/forms';
       },
       {
         path: 'login-admin',
-        component: LoginAdminComponent,
+        component: LoginAdminComponent
       },
       {
         path: 'login-nutri',
-        component: LoginNutriComponent,
+        component: LoginNutriComponent
       },
       {
         path: 'login-client',
-        component: LoginClientComponent,
+        component: LoginClientComponent
       },
       {
         path: 'register-client',
-        component: RegisterClientComponent,
+        component: RegisterClientComponent
       },
       {
         path: 'add-nutri',
-        component: AddNutriComponent,
+        component: AddNutriComponent
       },
       {
         path: 'nutri-hub',
-        component: NutriHubComponent,
+        component: NutriHubComponent
       },
       {
         path: 'add-product',
-        component: AddProductComponent,
+        component: AddProductComponent
       },
       {
         path: 'manage-dish',
-        component: ManageDishComponent,
+        component: ManageDishComponent
       },
       {
         path: 'patient-search',
-        component: SearchClientComponent,
+        component: SearchClientComponent
       },
       {
         path: 'assign-plan',
-        component: AssignPlanComponent,
+        component: AssignPlanComponent
       },
       {
         path: 'create-plan',
-        component: CreatePlanComponent,
+        component: CreatePlanComponent
       },
       {
         path: 'patient-follow-up',
-        component: ClientFollowUpComponent,
+        component: ClientFollowUpComponent
+      },
+      {
+        path: 'client-hub',
+        component: ClientHubComponent
+      },
+      {
+        path: 'add-measurement',
+        component: AddMeasurementComponent
+      },
+      {
+        path: 'daily-intake',
+        component: DailyIntakeComponent
+      },
+      {
+        path: 'progress-report',
+        component: ProgressReportComponent
+      },
+      {
+        path: 'approved-products',
+        component: ApprovedProductsComponent
+      },
+      {
+        path: 'pay-report',
+        component: PayReportComponent
       }
     ]),
   ],
