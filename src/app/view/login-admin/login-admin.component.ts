@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-admin',
@@ -7,6 +8,8 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./login-admin.component.scss']
 })
 export class LoginAdminComponent {
+
+  constructor( private router : Router ) { }
   
   /**
    * @description This is the form used to capture the user input
@@ -23,6 +26,7 @@ export class LoginAdminComponent {
    */
   adminLogin(form : any){
     console.log(form);
+    this.router.navigate(['/pay-report']);
   }
 
 }
