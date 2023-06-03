@@ -1,1 +1,86 @@
-<p>client-hub works!</p>
+<body>
+    
+    <app-sidebar-client></app-sidebar-client>
+
+    <div class="container">
+
+        <div class="row py-2">
+
+            <h2>Welcome back {{client.name+" "+client.lastname1+" "+client.lastname2}}</h2>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-xxl col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
+                <div class="card cardColor">
+                    <div class="card-body">
+                        <h3> Breakfast </h3>
+                        {{patientDaily['breakfast']}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xxl col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
+                <div class="card cardColor">
+                    <div class="card-body">
+                        <h3> Early Snack</h3>
+                        {{patientDaily['snack_morning']}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xxl col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
+                <div class="card cardColor">
+                    <div class="card-body">
+                        <h3> Lunch </h3>
+                        {{patientDaily['lunch']}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xxl col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
+                <div class="card cardColor">
+                    <div class="card-body">
+                        <h3> Late snack </h3>
+                        {{patientDaily['breakfast']}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xxl col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
+                <div class="card cardColor">
+                    <div class="card-body">
+                        <h3> Dinner </h3>
+                        {{patientDaily['dinner']}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <h2> Nutritionist Comments</h2>
+
+            <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 py-4">
+
+                <ul class="list-group overflow-auto shadow" style="max-height: 272px;">
+                <div class="card" *ngFor="let comment of comments">
+                        <div class="card-body">
+                            
+                            <h3> {{comment.nutritionist}} </h3>
+                            <p> {{comment.date}} </p>
+                            <p> {{comment.message}} </p>
+    
+                        </div>
+                    </div>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+    
+</body>

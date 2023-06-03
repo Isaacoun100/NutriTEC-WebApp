@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { client, comments, patientDaily } from 'src/app/setValues';
 
 @Component({
   selector: 'app-client-hub',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./client-hub.component.scss']
 })
 export class ClientHubComponent {
+
+  client = client;
+  patientDaily = patientDaily;
+  comments = comments;
 
 }
