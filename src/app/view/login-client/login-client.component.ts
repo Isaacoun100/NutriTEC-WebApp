@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-client',
@@ -17,10 +18,15 @@ export class LoginClientComponent {
     password: new FormControl('', { nonNullable: true }),
   });
 
+  constructor( private router : Router ) { }
+
   /**
    * @description This method is used to login the admin
    * @param form 
    */
-  clientLogin(form : any){}
+  clientLogin(form : any){
+    console.log(form);
+    this.router.navigate(['/client-hub']);
+  }
 
 }
