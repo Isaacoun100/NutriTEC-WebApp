@@ -135,15 +135,35 @@ export const vitamins = [
         select: false
     },
     {
-        vitamin:"B1",
-        select: false
-    },
-    {
-        vitamin:"B5",
-        select: false
-    },
-    {
         vitamin:"B6",
+        select: false
+    },
+    {
+        vitamin:"B12",
+        select: false
+    },
+    {
+        vitamin:"C",
+        select: false
+    },
+    {
+        vitamin:"D",
+        select: false
+    },
+    {
+        vitamin:"E",
+        select: false
+    },
+    {
+        vitamin:"K",
+        select: false
+    },
+    {
+        vitamin:"A",
+        select: false
+    },
+    {
+        vitamin:"B1",
         select: false
     },
     {
@@ -151,11 +171,19 @@ export const vitamins = [
         select: false
     },
     {
+        vitamin:"B5",
+        select: false
+    },
+    {
+        vitamin:"B7",
+        select: false
+    },
+    {
         vitamin:"B9",
         select: false
     },
     {
-        vitamin:"E",
+        vitamin:"P",
         select: false
     }
 ]
