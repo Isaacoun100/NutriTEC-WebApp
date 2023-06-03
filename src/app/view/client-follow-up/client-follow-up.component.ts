@@ -18,7 +18,8 @@ export class ClientFollowUpComponent {
    * @version 1.0
    */
   clientForm = new FormGroup({
-    id: new FormControl('', Validators.required)
+    id: new FormControl('', Validators.required),
+    date: new FormControl('2000-01-01', Validators.required),
   });
 
   /**

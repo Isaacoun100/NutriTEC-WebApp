@@ -7,39 +7,56 @@
         <div class="row p-4">
 
             <h2> My Patients </h2>
+            
+            <form [formGroup]="clientForm" (ngSubmit)="loadClientInfo(clientForm.getRawValue())">
 
-            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 py-2">
+                <div class="row">
 
-                <form [formGroup]="clientForm" (ngSubmit)="loadClientInfo(clientForm.getRawValue())">
+                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 py-3">
+    
+                        <div class="row">
+    
+                            <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 py-2">
+    
+                                <select class="form-select" formControlName="id">
 
-                    <div class="row">
+                                    <option [disabled]="true">Select Patient</option>
+                                    <option *ngFor="let patient of patients" [ngValue]="patient['id']">
+                                        {{patient['name'] +" "+ patient['lastname_1'] +" "+ patient['lastname_2']}}
+                                    </option>
 
-                        <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 py-2">
-
-                            <select class="form-select" formControlName="id">
-                                <option [disabled]="true">Select Patient</option>
-                                <option *ngFor="let patient of patients" [ngValue]="patient['id']">
-                                    {{patient['name'] +" "+ patient['lastname_1'] +" "+ patient['lastname_2']}}
-                                </option>
-                            </select>
-
+                                </select>
+    
+                            </div>
+    
+                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 py-2">
+    
+                                <button class="btn btn-success" type="submit">Load Info</button>
+    
+                            </div>
+    
                         </div>
-
-                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 py-2">
-
-                            <button class="btn btn-success" type="submit">Load Info</button>
-
-                        </div>
-
+                        
                     </div>
+                    
+                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        
+                        <label for="startDate">Date</label>
+                        <input type="date" 
+                        class="form-control" 
+                        id="date" 
+                        placeholder="Leave a comment"
+                        formControlName="date">
+    
+                    </div>
+                    
+                </div>
 
-                </form>
-
-            </div>
-
+            </form>
+                
             <div class="row">
 
-                <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
+                <div class="col-xxl col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
                     <div class="card cardColor">
                         <div class="card-body">
                             <h3> Breakfast </h3>
@@ -48,7 +65,7 @@
                     </div>
                 </div>
 
-                <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
+                <div class="col-xxl col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
                     <div class="card cardColor">
                         <div class="card-body">
                             <h3> Snack (Morning)</h3>
@@ -57,7 +74,7 @@
                     </div>
                 </div>
 
-                <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
+                <div class="col-xxl col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
                     <div class="card cardColor">
                         <div class="card-body">
                             <h3> Lunch </h3>
@@ -66,7 +83,7 @@
                     </div>
                 </div>
 
-                <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
+                <div class="col-xxl col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
                     <div class="card cardColor">
                         <div class="card-body">
                             <h3> Snack (Afternoon) </h3>
@@ -75,7 +92,7 @@
                     </div>
                 </div>
 
-                <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
+                <div class="col-xxl col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
                     <div class="card cardColor">
                         <div class="card-body">
                             <h3> Dinner </h3>
@@ -113,7 +130,6 @@
                 </form>
 
             </div>
-
 
         </div>
 
