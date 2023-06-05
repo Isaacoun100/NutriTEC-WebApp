@@ -9,19 +9,19 @@
 
           <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 py-2 text-center">
 
-            <h2> Welcome back {{ ' '+nutri['name']+' ' }} {{ ' '+nutri['lastname_1']+' ' }} {{ ' '+nutri['lastname_2'] }}</h2>
+            <h2> Welcome back {{ ' '+ getNutri()['nutritionist_name'] +' ' }} {{ ' '+ getNutri()['lastname1']+' ' }} {{ ' '+getNutri()['lastname2'] }}</h2>
             
         </div>
 
         <div class="col-12">
-            <img class="profilep" src="{{nutri['photo']}}" alt="profile">
+            <img class="profilep" src="{{getNutri()['photo']}}" alt="profile">
         </div>
 
           <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 py-2">
 
               <div class="card cardColor">
                   <div class="card-body">
-                    <p class="card-text"> ID : {{ ' '+nutri['id']+' ' }} </p> 
+                    <p class="card-text"> ID : {{ ' '+getNutri()['nutritionist_id']}} </p> 
                   </div>
                 </div>
 
@@ -31,7 +31,7 @@
 
               <div class="card cardColor">
                   <div class="card-body">
-                    <p class="card-text"> Email: {{ ' '+nutri['email']+' ' }} </p> 
+                    <p class="card-text"> Email: {{ ' '+ getNutri()['email'] }} </p> 
                   </div>
                 </div>
 
@@ -41,7 +41,7 @@
 
               <div class="card cardColor">
                   <div class="card-body">
-                    <p class="card-text"> Address {{ ' '+nutri['address']+' ' }} </p> 
+                    <p class="card-text"> Address {{ ' '+getNutri()['address'] }} </p> 
                   </div>
                 </div>
 
@@ -51,7 +51,7 @@
 
               <div class="card cardColor">
                   <div class="card-body">
-                    <p class="card-text"> Birth Date : {{ ' '+nutri['birth_date']+' ' }} </p> 
+                    <p class="card-text"> Birth Date : {{ ' '+getNutri()['birth_date'] }} </p> 
                   </div>
                 </div>
 
@@ -61,7 +61,7 @@
 
               <div class="card cardColor">
                   <div class="card-body">
-                    <p class="card-text"> Billing type: {{ ' '+nutri['billing_type']+' ' }} </p> 
+                    <p class="card-text"> Billing type: {{ ' '+getNutri()['billing_type'] }} </p> 
                   </div>
                 </div>
 
@@ -71,7 +71,7 @@
 
               <div class="card cardColor">
                   <div class="card-body">
-                    <p class="card-text"> Roll Name : {{ ' '+nutri['role_name']+' ' }} </p> 
+                    <p class="card-text"> Roll Name : {{ ' '+getNutri()['role_name'] }} </p> 
                   </div>
                 </div>
 
