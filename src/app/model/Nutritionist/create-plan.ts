@@ -1,5 +1,6 @@
 // {
 //     "plan_name":"string
+//     "nutritionist_id":"string”,
 //     "plan":[
 //        {
 //         "size":"double",
@@ -22,5 +23,6 @@ export interface PlanI {
 
 export interface GetDailyI{
     plan_name: string;
+    nutritionist_id: string;
     plan: PlanI[];
 }

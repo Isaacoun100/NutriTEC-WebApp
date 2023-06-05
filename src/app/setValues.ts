@@ -1,3 +1,7 @@
+export const BD_URL = 'https://nutritec-api.azurewebsites.net/api/';
+export const Mongo_URL = 'https://nutritecapifeedback.azurewebsites.net/api/';
+
+
 export const nutri = {
     nutri_code: "ABC123",
     id: "1234567890",

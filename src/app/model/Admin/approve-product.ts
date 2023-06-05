@@ -2,6 +2,6 @@
 //   "product_name":"string"
 // }
 
-export interface AddProductI {
+export interface ProductI {
     product_name: string;
 }

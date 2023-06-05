@@ -29,6 +29,7 @@ import { SidebarAdminComponent } from './view/sidebar-admin/sidebar-admin.compon
 import { SidebarClientComponent } from './view/sidebar-client/sidebar-client.component';
 import { SidebarNutriComponent } from './view/sidebar-nutri/sidebar-nutri.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { 
         path: '', 
