@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError, Observable, catchError } from 'rxjs';
-import { ResponseTemplateI } from 'src/app/model/responseTemplate';
+import { ResponseTemplateListReportI } from 'src/app/model/responseTemplate';
 import { BD_URL } from 'src/app/setValues';
 
 @Injectable({
@@ -38,9 +38,9 @@ export class PayReportService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
-  generateAdminReport(): Observable<ResponseTemplateI>{
+  generateAdminReport(): Observable<ResponseTemplateListReportI>{
     let direccion = this.BD_URL + 'generate_admin_report';
-    return this.http.get<ResponseTemplateI>(direccion).pipe(
+    return this.http.get<ResponseTemplateListReportI>(direccion).pipe(
       catchError(this.handleError)
       );
   }

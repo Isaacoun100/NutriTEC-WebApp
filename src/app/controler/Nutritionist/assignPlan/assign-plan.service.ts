@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { throwError, Observable, catchError } from 'rxjs';
 import { AssignPlanI } from 'src/app/model/Nutritionist/assign-plan';
 import { GetNutriClientsI } from 'src/app/model/Nutritionist/get-nutri';
-import { ResponseTemplateI } from 'src/app/model/responseTemplate';
+import { ResponseTemplateI, ResponseTemplateListPatientI, ResponseTemplateListPlanI } from 'src/app/model/responseTemplate';
 import { BD_URL } from 'src/app/setValues';
 
 @Injectable({
@@ -90,16 +90,16 @@ export class AssignPlanService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
-  getNutriPlans(form : GetNutriClientsI): Observable<ResponseTemplateI>{
+  getNutriPlans(form : GetNutriClientsI): Observable<ResponseTemplateListPlanI>{
     let direccion = this.BD_URL + 'get_nutritionist_plans';
-    return this.http.post<ResponseTemplateI>(direccion, form).pipe(
+    return this.http.post<ResponseTemplateListPlanI>(direccion, form).pipe(
       catchError(this.handleErrorPlans)
       );
   }
 
-  getNutriClients(form : GetNutriClientsI): Observable<ResponseTemplateI>{
+  getNutriClients(form : GetNutriClientsI): Observable<ResponseTemplateListPatientI>{
     let direccion = this.BD_URL + 'get_nutritionist_clients';
-    return this.http.post<ResponseTemplateI>(direccion, form).pipe(
+    return this.http.post<ResponseTemplateListPatientI>(direccion, form).pipe(
       catchError(this.handleErrorClient)
       );
   }

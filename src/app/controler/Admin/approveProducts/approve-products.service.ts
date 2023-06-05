@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { ProductI } from 'src/app/model/Admin/approve-product';
-import { ResponseTemplateI } from 'src/app/model/responseTemplate';
+import { ResponseTemplateI, ResponseTemplateListUnnaprovedI } from 'src/app/model/responseTemplate';
 import { BD_URL } from 'src/app/setValues';
 
 @Injectable({
@@ -66,9 +66,9 @@ export class ApproveProductsService {
   }
 
 
-  getUnnaprovedProducts(): Observable<ResponseTemplateI>{
+  getUnnaprovedProducts(): Observable<ResponseTemplateListUnnaprovedI>{
     let direccion = this.BD_URL + 'get_unapproved_products';
-    return this.http.get<ResponseTemplateI>(direccion).pipe(
+    return this.http.get<ResponseTemplateListUnnaprovedI>(direccion).pipe(
       catchError(this.handleErrorProducts)
       );
   }
@@ -81,7 +81,7 @@ export class ApproveProductsService {
   }
 
   deleteProduct(form : ProductI): Observable<ResponseTemplateI>{
-    let direccion = this.BD_URL + 'approve_product ';
+    let direccion = this.BD_URL + 'delete_product';
     return this.http.post<ResponseTemplateI>(direccion, form).pipe(
       catchError(this.handleErrorManage)
       );

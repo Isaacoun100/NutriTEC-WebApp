@@ -1,8 +1,9 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError, Observable, catchError } from 'rxjs';
+import { NewProductI, ProductI } from 'src/app/model/Admin/approve-product';
 import { DishI } from 'src/app/model/Nutritionist/add-dish';
-import { ResponseTemplateI } from 'src/app/model/responseTemplate';
+import { ResponseTemplateI, ResponseTemplateListProductI } from 'src/app/model/responseTemplate';
 import { BD_URL } from 'src/app/setValues';
 
 @Injectable({
@@ -14,7 +15,7 @@ export class ManageDishService {
   
   constructor(private http: HttpClient) {}
   
-  private handleError(error: HttpErrorResponse) {
+  private handleErrorDish(error: HttpErrorResponse) {
     if (error.status === 0) {
       
       alert('A client-side or network error occurred.') ;
@@ -39,10 +40,42 @@ export class ManageDishService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
+  private handleErrorProduct(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      
+      alert('A client-side or network error occurred.') ;
+      console.error('An error occurred:', error.error);
+    
+    }
+
+    else if (error.status === 400) {
+      
+      alert('Sorry, no products where found.') ;
+      console.error('Bad Request', error.error);
+    
+    }
+     
+    else {
+
+      alert('The server returned an unsuccessful response code.') ;
+      console.error(`Backend returned code ${error.status}, body was: `, error.error);
+    
+    }
+
+    return throwError(() => new Error('Something bad happened; please try again later.'));
+  }
+
   addDish(form : DishI): Observable<ResponseTemplateI>{
-    let direccion = this.BD_URL + 'auth_admin';
+    let direccion = this.BD_URL + 'add_dish';
     return this.http.post<ResponseTemplateI>(direccion, form).pipe(
-      catchError(this.handleError)
+      catchError(this.handleErrorDish)
+      );
+  }
+
+  searchDish(form : NewProductI): Observable<ResponseTemplateListProductI>{
+    let direccion = this.BD_URL + 'search_dish ';
+    return this.http.post<ResponseTemplateListProductI>(direccion, form).pipe(
+      catchError(this.handleErrorProduct)
       );
   }
 

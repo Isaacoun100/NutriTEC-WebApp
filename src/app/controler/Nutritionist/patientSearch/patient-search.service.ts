@@ -1,8 +1,9 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError, Observable, catchError } from 'rxjs';
+import { AssociateClientI } from 'src/app/model/Nutritionist/associate-client';
 import { SearchClientI } from 'src/app/model/Nutritionist/search-client';
-import { ResponseTemplateI } from 'src/app/model/responseTemplate';
+import { ResponseTemplateI, ResponseTemplateListClientI } from 'src/app/model/responseTemplate';
 import { BD_URL } from 'src/app/setValues';
 
 @Injectable({
@@ -38,9 +39,16 @@ export class PatientSearchService {
 
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
-
-  searchClient(form : SearchClientI): Observable<ResponseTemplateI>{
+  
+  searchClient(form : SearchClientI): Observable<ResponseTemplateListClientI>{
     let direccion = this.BD_URL + 'search_patient';
+    return this.http.post<ResponseTemplateListClientI>(direccion, form).pipe(
+      catchError(this.handleError)
+      );
+  }
+
+  assignClient(form : AssociateClientI): Observable<ResponseTemplateI>{
+    let direccion = this.BD_URL + 'associate_client';
     return this.http.post<ResponseTemplateI>(direccion, form).pipe(
       catchError(this.handleError)
       );

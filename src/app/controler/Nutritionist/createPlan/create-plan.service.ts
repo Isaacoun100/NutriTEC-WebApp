@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError, Observable, catchError } from 'rxjs';
-import { PlanI } from 'src/app/model/Nutritionist/create-plan';
+import { GetDailyI } from 'src/app/model/Nutritionist/create-plan';
 import { ResponseTemplateI } from 'src/app/model/responseTemplate';
 import { BD_URL } from 'src/app/setValues';
 
@@ -39,7 +39,7 @@ export class CreatePlanService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
-  createPlan(form : PlanI ): Observable<ResponseTemplateI>{
+  createPlan(form : GetDailyI ): Observable<ResponseTemplateI>{
     let direccion = this.BD_URL + 'create_plan';
     return this.http.post<ResponseTemplateI>(direccion, form).pipe(
       catchError(this.handleError)
