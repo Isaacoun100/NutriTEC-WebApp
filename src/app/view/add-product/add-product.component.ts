@@ -1,6 +1,8 @@
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { vitamins } from './../../setValues';
 import { Component } from '@angular/core';
+import { AddProductService } from 'src/app/controler/Shared/addProduct/add-product.service';
+import { AddProductI } from 'src/app/model/Nutritionist/add-product';
 
 @Component({
   selector: 'app-add-product',
@@ -8,6 +10,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent {
+
+  constructor( private api : AddProductService ) { }
 
   vitamins = vitamins;
   parentSelector: boolean = false;
@@ -27,23 +31,29 @@ export class AddProductComponent {
     ])
   });
 
-  addProduct (form : any) {
+  addVitamins(){
 
     this.productForm.controls['vitamins'].clear();
-
-    console.log(this.productForm.controls['vitamins']);
     
     for (let index = 0; index < vitamins.length; index++){
       
       if (vitamins[index].select == true){
         this.productForm.controls['vitamins'].push( new FormControl(vitamins[index].vitamin, Validators.required) );
       }
-
+      
     }
 
-    console.log(this.productForm.getRawValue());
-
   }
+
+  addProduct (form : AddProductI) {
+
+    console.log(form);
+
+    this.api.addProduct(form).subscribe((data) => {
+      alert('Product added successfully');
+    });
+    
+    }
 
   onChangeFood($event: any) {
     const vitamin = $event.target.value;
