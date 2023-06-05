@@ -17,9 +17,9 @@
                 
                             <input type="text" 
                             class="form-control" 
-                            id="name" 
+                            id="client_name" 
                             placeholder="Search by name"
-                            formControlName="name">
+                            formControlName="client_name">
     
                         </div>
     
@@ -52,8 +52,8 @@
             
                             <h4>
             
-                                <a (click)="assignPatient(patient['id'])">
-                                    <div>{{ patient['name'] + " " + patient['lastname_1'] + " " + patient['lastname_2']}}</div>
+                                <a (click)="assignPatient(patient.email)">
+                                    <div>{{ patient.client_name }}</div>
                                 </a>
             
                             </h4>
