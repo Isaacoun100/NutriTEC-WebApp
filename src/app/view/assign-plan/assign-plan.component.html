@@ -16,10 +16,10 @@
                             
                             <label for="nombre_sucursal py">Patient</label>
                             
-                            <select class="form-select" size="7" aria-label="size 3 select example" formControlName="patient">
+                            <select class="form-select" size="7" aria-label="size 3 select example" formControlName="email_client">
                                 <option [disabled]="true">Select Patient</option>
-                                <option *ngFor="let patient of patients" [ngValue]="patient['id']">
-                                    {{ patient['name'] + ' ' + patient['lastname_1'] + ' ' + patient['lastname_2'] }}
+                                <option *ngFor="let patient of patients" [ngValue]="patient.email">
+                                    {{ patient.name + ' ' + patient.lastname1 + ' ' + patient.lastname2 }}
                                 </option>
 
                             </select>
@@ -37,11 +37,11 @@
                             
                             <label for="plan">My Plans</label>
                             
-                            <select class="form-select" size="7" aria-label="size 3 select example" formControlName="plan">
+                            <select class="form-select" size="7" aria-label="size 3 select example" formControlName="plan_name">
                                 
                                 <option [disabled]="true">Select Plan</option>
-                                <option *ngFor="let plan of plans" [ngValue]="plan['id']">
-                                    {{ plan['name']}}
+                                <option *ngFor="let plan of plans" [ngValue]="plan.plan_name">
+                                    {{ plan.plan_name }}
                                 </option>
 
                             </select>
@@ -57,12 +57,12 @@
 
                         <div class="card-body">
                             
-                            <label for="startDate">Start Date</label>
+                            <label for="start_date">Start Date</label>
                             <input 
                             type="date" 
                             class="form-control" 
-                            id="startDate" 
-                            formControlName="startDate"
+                            id="start_date" 
+                            formControlName="start_date"
                             >
 
                         </div>
@@ -74,12 +74,12 @@
 
                         <div class="card-body">
                             
-                            <label for="endDate">End Date</label>
+                            <label for="end_date">End Date</label>
                             <input 
                             type="date" 
                             class="form-control" 
-                            id="endDate" 
-                            formControlName="endDate"
+                            id="end_date" 
+                            formControlName="end_date"
                             >
 
                         </div>
