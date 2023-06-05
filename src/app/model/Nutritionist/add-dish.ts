@@ -13,11 +13,11 @@
 //  }
 
 export interface IngredientI {
-    size: number;
-    product: string;
+    size: number | null;
+    product: string | null;
 }
 
 export interface DishI {
-    dish_name: string;
-    ingredients: IngredientI[];
+    dish_name: string | null;
+    ingredients: (IngredientI | null)[];
 }

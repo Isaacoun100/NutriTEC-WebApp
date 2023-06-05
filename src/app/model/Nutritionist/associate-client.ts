@@ -4,6 +4,6 @@
 // }
 
 export interface AssociateClientI {
-    client_email: string;
-    nutritionist_id: string;
+    client_email: string | null;
+    nutritionist_id: string | null;
 }

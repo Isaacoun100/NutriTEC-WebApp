@@ -15,14 +15,14 @@
 //   ]}
   
 export interface AddProductI {
-    name: string;
-    size: number;
-    calories: number;
-    fat: number;
-    sodium: number;
-    carbs: number;
-    protein: number;
-    calcium: number;
-    iron: number;
-    vitamins: string[];
+    name: string | null;
+    size: number | null;
+    calories: number | null;
+    fat: number | null;
+    sodium: number | null;
+    carbs: number | null;
+    protein: number | null;
+    calcium: number | null;
+    iron: number | null;
+    vitamins: (string | null)[];
   }
