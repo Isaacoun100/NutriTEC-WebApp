@@ -1,6 +1,8 @@
 import { paymentTypes } from './../../setValues';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AddNutriService } from 'src/app/controler/Nutritionist/addNutri/add-nutri.service';
+import { CreateNutriI } from 'src/app/model/Nutritionist/create-nutri';
 
 @Component({
   selector: 'app-add-nutri',
@@ -11,6 +13,8 @@ export class AddNutriComponent {
 
   paymentTypes = paymentTypes;
 
+  constructor( private api : AddNutriService ) { }
+
   /**
    * @description This is the form we use to store the data the user inputs.
    * @version 1.0
@@ -18,25 +22,30 @@ export class AddNutriComponent {
   nutriForm = new FormGroup({
     id: new FormControl('', Validators.required),
     name: new FormControl('', Validators.required),
-    firstLastName: new FormControl('', Validators.required),
-    secondLastName: new FormControl('', Validators.required),
+    lastname_1: new FormControl('', Validators.required),
+    lastname_2: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
-    nutriID: new FormControl('', Validators.required),
-    birthDate: new FormControl('', Validators.required),
-    weight: new FormControl(0, Validators.required),
-    height: new FormControl(0, Validators.required),
     password: new FormControl('', Validators.required),
+    birth_date: new FormControl('', Validators.required),
+    weight: new FormControl(0, Validators.required),
+    address: new FormControl('', Validators.required),
+    height: new FormControl(0, Validators.required),
     photo: new FormControl('', Validators.required),
-    creditCard: new FormControl('', Validators.required),
-    paymentType: new FormControl('', Validators.required)
+    credit_card: new FormControl('', Validators.required),
+    payment_type: new FormControl('', Validators.required)
   });
 
   /**
    * @description This method is used to create a new Nutri
    * @param form 
    */
-  createNewNutri(form : any) {
+  createNewNutri(form : CreateNutriI) {
+
     console.log(form);
+
+    this.api.AddNutri(form).subscribe((data) => {
+      alert('Nutritionist added successfully');
+    });
   }
 
 }
