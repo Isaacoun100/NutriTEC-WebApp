@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { products } from 'src/app/setValues';
+import { ManageDishService } from 'src/app/controler/Shared/manageDish/manage-dish.service';
+import { DishItemI, NewProductI } from 'src/app/model/Admin/approve-product';
+import { DishI } from 'src/app/model/Nutritionist/add-dish';
 
 @Component({
   selector: 'app-manage-dish',
@@ -11,11 +13,13 @@ export class ManageDishComponent {
 
   currentProduct = 0;
 
-  products = products;
+  products : DishItemI[] = [];
+
+  constructor( private apiDish : ManageDishService){}
 
   ingredients = [
     new FormGroup({
-      barcode : new FormControl('', Validators.required),
+      barcode : new FormControl(0, Validators.required),
       size : new FormControl(0, Validators.required),
       product : new FormControl('', Validators.required)
   })];
@@ -38,12 +42,16 @@ export class ManageDishComponent {
     sizeInput : new FormControl(0, Validators.required)
   });
 
-  searchProduct( form : any) {
-    console.log(this.searchForm.value);
+  searchProduct(form : NewProductI) {
+    this.apiDish.searchDish(form).subscribe(data => {
+      this.products = data.result;
+    });
   }
 
-  addDish( form : any) {
-    console.log(this.newDish.value);
+  addDish( form : DishI) {
+    this.apiDish.addDish(form).subscribe(data => {
+      alert('Dish added successfully');
+    });
   }
 
   addProduct(size : any){
@@ -76,7 +84,7 @@ export class ManageDishComponent {
       const listPlan = new FormGroup({
         size : new FormControl(0, Validators.required),
         product : new FormControl('', Validators.required),
-        barcode : new FormControl('', Validators.required)
+        barcode : new FormControl(0, Validators.required)
       });
 
       listPlan.controls['size'].setValue(Number(size));
