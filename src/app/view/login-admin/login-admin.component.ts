@@ -42,7 +42,7 @@ export class LoginAdminComponent {
       } 
       else {
         console.log(dataResponse.status);
-        alert('Usuario o contraseña incorrecto');
+        alert('Password or email incorrect');
         console.log(data);
       }
     });
