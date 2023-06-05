@@ -1,5 +1,9 @@
 import { Component, ViewChild, ElementRef  } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { CreatePlanService } from 'src/app/controler/Nutritionist/createPlan/create-plan.service';
+import { ManageDishService } from 'src/app/controler/Shared/manageDish/manage-dish.service';
+import { DishItemI, NewProductI } from 'src/app/model/Admin/approve-product';
+import { GetDailyI, PlanI } from 'src/app/model/Nutritionist/create-plan';
 import { mealTimes, products } from 'src/app/setValues';
 
 @Component({
@@ -11,11 +15,11 @@ export class CreatePlanComponent {
 
   currentProduct = 0;
   mealTimes = mealTimes;
-  products = products;
+  products : DishItemI[] = [];
 
   plans = [
     new FormGroup({
-      barcode : new FormControl('', Validators.required),
+      barcode : new FormControl(0, Validators.required),
       size : new FormControl(0, Validators.required),
       product : new FormControl('', Validators.required)
     })];
@@ -31,6 +35,7 @@ export class CreatePlanComponent {
   // The meal_time should be individual for each dish
   newPlan = new FormGroup({
     plan_name : new FormControl('', Validators.required),
+    nutritionist_id : new FormControl('', Validators.required),
     plan : new FormArray([
       new FormGroup({
         meal_time : new FormControl('', Validators.required),
@@ -44,14 +49,27 @@ export class CreatePlanComponent {
     sizeInput : new FormControl(0, Validators.required)
   });
 
-  searchProduct( form : any) {
-    console.log(this.searchForm.value);
+  constructor( private apiPlan : CreatePlanService,
+    private apiDish : ManageDishService){
+      this.newPlan.controls['nutritionist_id'].setValue(
+        JSON.parse(String(sessionStorage.getItem('nutri'))).nutri_code
+        );
+    }
+
+  searchProduct(form : NewProductI) {
+    this.apiDish.searchDish(form).subscribe(data => {
+      this.products = data.result;
+    });
   }
 
-  addPlan( form : any) {
-    console.log(this.newPlan.value);
-  }
+  addPlan( form : GetDailyI) {
 
+    console.log(form);
+    
+    this.apiPlan.createPlan(form).subscribe(data => {
+      alert('Dish added successfully');
+      });
+  }
 
   addProduct(size : any, meal_type : any){
 
@@ -88,7 +106,7 @@ export class CreatePlanComponent {
       const listPlan = new FormGroup({
         size : new FormControl(0, Validators.required),
         product : new FormControl('', Validators.required),
-        barcode : new FormControl('', Validators.required)
+        barcode : new FormControl(0, Validators.required)
       });
 
       listPlan.controls['size'].setValue(Number(size));
