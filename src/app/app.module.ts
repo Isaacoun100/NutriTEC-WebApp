@@ -30,6 +30,7 @@ import { SidebarClientComponent } from './view/sidebar-client/sidebar-client.com
 import { SidebarNutriComponent } from './view/sidebar-nutri/sidebar-nutri.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -143,7 +144,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
       }
     ]),
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
