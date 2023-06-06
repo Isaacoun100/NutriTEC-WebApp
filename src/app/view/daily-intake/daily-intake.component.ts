@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { mealTimes, products } from 'src/app/setValues';
+import { DailyIntakeService } from 'src/app/controler/Client/dailyIntake/daily-intake.service';
+import { ManageDishService } from 'src/app/controler/Shared/manageDish/manage-dish.service';
+import { DishItemI, NewProductI } from 'src/app/model/Admin/approve-product';
+import { AddDailyI } from 'src/app/model/Client/add-daily';
+import { mealTimes } from 'src/app/setValues';
 
 @Component({
   selector: 'app-daily-intake',
@@ -11,14 +15,25 @@ export class DailyIntakeComponent {
   
   currentProduct = 0;
   mealTimes = mealTimes;
-  products = products;
+  products : DishItemI[] = [];
   
   plans = [
     new FormGroup({
-      barcode : new FormControl('', Validators.required),
+      barcode : new FormControl(0, Validators.required),
       size : new FormControl(0, Validators.required),
       product : new FormControl('', Validators.required)
     })];
+
+    constructor( private apiDish : ManageDishService,
+      private apiIntake : DailyIntakeService){
+        this.dailyIntakeForm.controls['client_id'].setValue(
+          JSON.parse(String(sessionStorage.getItem('client'))).email
+        );
+      }
+      
+    searchForm = new FormGroup({
+      product : new FormControl('', Validators.required)
+     });
 
   /**
    * @description This is the form we use to store to capture the user input for the daily intake.
@@ -36,20 +51,27 @@ export class DailyIntakeComponent {
     ])
   });
 
-  searchForm = new FormGroup({
-    product : new FormControl('', Validators.required)
-   });
+
 
   sizeForm = new FormGroup({
     sizeInput : new FormControl(0, Validators.required)
   });
 
-  searchProduct( form : any) {
-    console.log(this.dailyIntakeForm.value);
+  searchProduct(form : NewProductI) {
+    this.apiDish.searchDish(form).subscribe(data => {
+      this.products = data.result;
+    });
   }
 
-  addIntake( form : any) {
-    console.log(this.dailyIntakeForm.value);
+  addIntake( form : AddDailyI) {
+
+    console.log(this.plans)
+
+    console.log(form);
+
+    this.apiIntake.addDailyIntake(form).subscribe(data => {
+      alert('Daily intake added successfully');
+    });
   }
 
   /**
@@ -70,22 +92,36 @@ export class DailyIntakeComponent {
 
       this.dailyIntakeForm.controls['consumption'].controls.at(0)?.controls['size'].setValue(Number(size));
       this.dailyIntakeForm.controls['consumption'].controls.at(0)?.controls['product'].setValue(this.products[this.currentProduct].product_name);
-      this.dailyIntakeForm.controls['consumption'].controls.at(0)?.controls['food_time'].setValue(meal_type);
+      this.dailyIntakeForm.controls['consumption'].controls.at(0)?.controls['food_time'].setValue(meal_type.value);
+
+      console.log('I should only appear once')
 
     }
     else{
 
-      const newPlan = new FormGroup({
+      const insertPlan = new FormGroup({
         size : new FormControl(0, Validators.required),
         product : new FormControl('', Validators.required),
-        barcode : new FormControl('', Validators.required)
+        food_time : new FormControl('', Validators.required)
       });
 
-      newPlan.controls['size'].setValue(Number(size));
-      newPlan.controls['product'].setValue(this.products[this.currentProduct].product_name);
-      newPlan.controls['barcode'].setValue(this.products[this.currentProduct].barcode);
+      insertPlan.controls['size'].setValue(Number(size));
+      insertPlan.controls['product'].setValue( this.products[this.currentProduct].product_name );
+      insertPlan.controls['food_time'].setValue( meal_type.value );
 
-      this.plans.push(newPlan);
+      this.dailyIntakeForm.controls['consumption'].push(insertPlan);
+
+      const listPlan = new FormGroup({
+        size : new FormControl(0, Validators.required),
+        product : new FormControl('', Validators.required),
+        barcode : new FormControl(0, Validators.required)
+      });
+
+      listPlan.controls['size'].setValue(Number(size));
+      listPlan.controls['product'].setValue( this.products[this.currentProduct].product_name );
+      listPlan.controls['barcode'].setValue( this.products[this.currentProduct].barcode );
+
+      this.plans.push(listPlan);
 
     }
 
