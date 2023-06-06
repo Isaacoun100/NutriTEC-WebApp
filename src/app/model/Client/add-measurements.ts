@@ -10,12 +10,12 @@
 //   }
 
 export interface AddMeasurementsI {
-    client_id: string;
-    date: string;
-    weight: string;
-    waist: string;
-    neck: string;
-    hip: string;
-    muscle_percentage: string;
-    fat_percentage: string;
+    client_id: string | null;
+    date: string | null;
+    weight: number | null;
+    waist: number | null;
+    neck: number | null;
+    hip: number| null;
+    muscle_percentage: string | null;
+    fat_percentage: string | null;
 }

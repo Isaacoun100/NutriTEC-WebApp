@@ -16,13 +16,13 @@
 //   }
 
 export interface AddDailyI {
-    client_id: string;
-    date: string;
-    consumption: ConsumptionI[];
+    client_id: string | null;
+    date: string | null;
+    consumption: (ConsumptionI|null)[];
 }
 
 export interface ConsumptionI {
-    size: string;
-    product: string;
-    food_time: string;
+    size: number | null;
+    product: string | null;
+    food_time: string | null;
 }
