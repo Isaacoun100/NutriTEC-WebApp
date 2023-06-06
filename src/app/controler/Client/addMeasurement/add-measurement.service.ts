@@ -40,7 +40,10 @@ export class AddMeasurementService {
   }
 
   addMeasuments(form : AddMeasurementsI): Observable<ResponseTemplateI>{
-    let direccion = this.BD_URL + 'auth_admin';
+    let direccion = this.BD_URL + 'add_measurement';
+
+    console.log(form);
+
     return this.http.post<ResponseTemplateI>(direccion, form).pipe(
       catchError(this.handleError)
       );

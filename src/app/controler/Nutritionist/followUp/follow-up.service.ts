@@ -2,10 +2,9 @@ import { Mongo_URL } from './../../../setValues';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError, Observable, catchError } from 'rxjs';
-import { LoginAdminI } from 'src/app/model/Admin/login-admin';
 import { FeedbackI } from 'src/app/model/Nutritionist/add-feedback';
 import { GetDailyI } from 'src/app/model/Nutritionist/follow-up';
-import { ResponseTemplateI } from 'src/app/model/responseTemplate';
+import { ResponseTemplateI, ResponseTemplateListDailyI } from 'src/app/model/responseTemplate';
 import { BD_URL } from 'src/app/setValues';
 
 @Injectable({
@@ -43,9 +42,9 @@ export class FollowUpService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
-  loadPatientInfo(form : GetDailyI): Observable<ResponseTemplateI>{
-    let direccion = this.BD_URL + 'auth_admin';
-    return this.http.post<ResponseTemplateI>(direccion, form).pipe(
+  loadPatientInfo(form : GetDailyI): Observable<ResponseTemplateListDailyI>{
+    let direccion = this.BD_URL + 'patient_follow_up';
+    return this.http.post<ResponseTemplateListDailyI>(direccion, form).pipe(
       catchError(this.handleErrorFollowUp)
       );
   }

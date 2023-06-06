@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError, Observable, catchError } from 'rxjs';
 import { GenerateReportI } from 'src/app/model/Client/report';
-import { ResponseTemplateI } from 'src/app/model/responseTemplate';
+import { ResponseTemplateI, ResponseTemplateListProgressI } from 'src/app/model/responseTemplate';
 import { BD_URL } from 'src/app/setValues';
 
 @Injectable({
@@ -39,9 +39,9 @@ export class ProgressReportService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
-  getProgressReport(form : GenerateReportI): Observable<ResponseTemplateI>{
-    let direccion = this.BD_URL + 'generate _report';
-    return this.http.post<ResponseTemplateI>(direccion, form).pipe(
+  getProgressReport(form : GenerateReportI): Observable<ResponseTemplateListProgressI>{
+    let direccion = this.BD_URL + 'generate_report';
+    return this.http.post<ResponseTemplateListProgressI>(direccion, form).pipe(
       catchError(this.handleError)
       );
   }

@@ -3,8 +3,9 @@ import { Mongo_URL, BD_URL } from './../../../setValues';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError, Observable, catchError } from 'rxjs';
-import { ResponseTemplateI } from 'src/app/model/responseTemplate';
-import { LoadPlanI } from 'src/app/model/Client/load-plan';
+import { ResponseTemplateI, ResponseTemplateListDailyI } from 'src/app/model/responseTemplate';
+import { DailyPlanI, LoadPlanI } from 'src/app/model/Client/load-plan';
+import { CommentI } from 'src/app/model/Client/load-comments';
 
 @Injectable({
   providedIn: 'root'
@@ -66,16 +67,17 @@ export class ClientHubService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
-  loadComments(form : FeedbackI): Observable<ResponseTemplateI>{
+  loadComments(form : LoadPlanI): Observable<CommentI[]>{
     let direccion = this.Mongo_URL + 'get_feedback';
-    return this.http.post<ResponseTemplateI>(direccion, form).pipe(
+    console.log(form)
+    return this.http.post<CommentI[]>(direccion, form).pipe(
       catchError(this.handleErrorComments)
       );
   }
 
-  loadPlan(form : LoadPlanI): Observable<ResponseTemplateI>{
-    let direccion = this.BD_URL + 'load_plan';
-    return this.http.post<ResponseTemplateI>(direccion, form).pipe(
+  loadPlan(form : DailyPlanI): Observable<ResponseTemplateListDailyI>{
+    let direccion = this.BD_URL + 'get_client_plan';
+    return this.http.post<ResponseTemplateListDailyI>(direccion, form).pipe(
       catchError(this.handleErrorPlan)
       );
   }

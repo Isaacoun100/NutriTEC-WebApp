@@ -24,7 +24,7 @@ export class DailyIntakeService {
 
     else if (error.status === 400) {
       
-      alert('Sorry, the email or password is incorrect.') ;
+      alert('Sorry, could not add information.') ;
       console.error('Bad Request', error.error);
     
     }
@@ -40,7 +40,7 @@ export class DailyIntakeService {
   }
 
   addDailyIntake(form : AddDailyI): Observable<ResponseTemplateI>{
-    let direccion = this.BD_URL + 'auth_admin';
+    let direccion = this.BD_URL + 'add_daily_intake';
     return this.http.post<ResponseTemplateI>(direccion, form).pipe(
       catchError(this.handleError)
       );
