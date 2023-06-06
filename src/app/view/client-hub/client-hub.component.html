@@ -6,7 +6,7 @@
 
         <div class="row py-2">
 
-            <h2>Welcome back {{client.name+" "+client.lastname1+" "+client.lastname2}}</h2>
+            <h2>Welcome back {{this.getSessionStorage('name')+" "+ this.getSessionStorage('lastname1') +" "+ this.getSessionStorage('lastname2') }}</h2>
 
         </div>
 
@@ -16,7 +16,11 @@
                 <div class="card cardColor">
                     <div class="card-body">
                         <h3> Breakfast </h3>
-                        {{patientDaily['breakfast']}}
+                        <p *ngFor="let daily of getDailyFood('Breakfast')">
+                            Dish : {{daily.dish_name}}
+                            <br> 
+                            Serving : {{daily.serving}}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -24,8 +28,12 @@
             <div class="col-xxl col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
                 <div class="card cardColor">
                     <div class="card-body">
-                        <h3> Early Snack</h3>
-                        {{patientDaily['snack_morning']}}
+                        <h3> Early snack </h3>
+                        <p *ngFor="let daily of getDailyFood('Early snack')">
+                            Dish : {{daily.dish_name}}
+                            <br>
+                            Serving : {{daily.serving}}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -34,7 +42,11 @@
                 <div class="card cardColor">
                     <div class="card-body">
                         <h3> Lunch </h3>
-                        {{patientDaily['lunch']}}
+                        <p *ngFor="let daily of getDailyFood('Lunch')">
+                            Dish : {{daily.dish_name}}
+                            <br>
+                            Serving : {{daily.serving}}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -43,7 +55,11 @@
                 <div class="card cardColor">
                     <div class="card-body">
                         <h3> Late snack </h3>
-                        {{patientDaily['breakfast']}}
+                        <p *ngFor="let daily of getDailyFood('Late snack')">
+                            Dish : {{daily.dish_name}}
+                            <br>
+                            Serving : {{daily.serving}}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -52,7 +68,11 @@
                 <div class="card cardColor">
                     <div class="card-body">
                         <h3> Dinner </h3>
-                        {{patientDaily['dinner']}}
+                        <p *ngFor="let daily of getDailyFood('Dinner')">
+                            Dish : {{daily.dish_name}}
+                            <br>
+                            Serving : {{daily.serving}}
+                        </p>
                     </div>
                 </div>
             </div>
