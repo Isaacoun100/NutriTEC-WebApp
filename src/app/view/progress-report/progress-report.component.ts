@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { clientReports } from 'src/app/setValues';
+import { ProgressReportService } from 'src/app/controler/Client/progressReport/progress-report.service';
+import { GenerateReportI, ProgressReportI } from 'src/app/model/Client/report';
 
 @Component({
   selector: 'app-progress-report',
@@ -9,7 +10,13 @@ import { clientReports } from 'src/app/setValues';
 })
 export class ProgressReportComponent {
 
-  clientReports = clientReports;
+  clientReports : ProgressReportI[] = [];
+
+  constructor( private api : ProgressReportService ) {
+    this.progressForm.controls['client_id'].setValue(
+      String(JSON.parse(String(sessionStorage.getItem('client'))).email)
+    );
+  }
 
   progressForm = new FormGroup({
     client_id : new FormControl('', Validators.required),
@@ -17,8 +24,13 @@ export class ProgressReportComponent {
     end_date : new FormControl('', Validators.required)
   });
 
-  getProgress(form : any) {
+  getProgress(form : GenerateReportI) {
+
     console.log(form);
+
+    this.api.getProgressReport(form).subscribe(data => {
+      this.clientReports = data.result;
+    });
   }
 
 }
