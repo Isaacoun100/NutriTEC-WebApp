@@ -18,11 +18,11 @@
     
                             <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 py-2">
     
-                                <select class="form-select" formControlName="id">
+                                <select class="form-select" formControlName="client_email">
 
                                     <option [disabled]="true">Select Patient</option>
-                                    <option *ngFor="let patient of patients" [ngValue]="patient['id']">
-                                        {{patient['name'] +" "+ patient['lastname_1'] +" "+ patient['lastname_2']}}
+                                    <option *ngFor="let patient of patients" [ngValue]="patient.email">
+                                        {{patient.name +" "+ patient.lastname1 +" "+ patient.lastname2 }}
                                     </option>
 
                                 </select>
@@ -60,7 +60,11 @@
                     <div class="card cardColor">
                         <div class="card-body">
                             <h3> Breakfast </h3>
-                            {{patientDaily['breakfast']}}
+                            <p *ngFor="let daily of getDailyFood('Breakfast')">
+                                Dish : {{daily.dish_name}}
+                                <br> 
+                                Serving : {{daily.serving}}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -68,8 +72,12 @@
                 <div class="col-xxl col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
                     <div class="card cardColor">
                         <div class="card-body">
-                            <h3> Snack (Morning)</h3>
-                            {{patientDaily['snack_morning']}}
+                            <h3> Early snack </h3>
+                            <p *ngFor="let daily of getDailyFood('Early snack')">
+                                Dish : {{daily.dish_name}}
+                                <br>
+                                Serving : {{daily.serving}}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -78,7 +86,11 @@
                     <div class="card cardColor">
                         <div class="card-body">
                             <h3> Lunch </h3>
-                            {{patientDaily['lunch']}}
+                            <p *ngFor="let daily of getDailyFood('Lunch')">
+                                Dish : {{daily.dish_name}}
+                                <br>
+                                Serving : {{daily.serving}}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -86,8 +98,12 @@
                 <div class="col-xxl col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
                     <div class="card cardColor">
                         <div class="card-body">
-                            <h3> Snack (Afternoon) </h3>
-                            {{patientDaily['breakfast']}}
+                            <h3> Late snack </h3>
+                            <p *ngFor="let daily of getDailyFood('Late snack')">
+                                Dish : {{daily.dish_name}}
+                                <br>
+                                Serving : {{daily.serving}}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -96,7 +112,11 @@
                     <div class="card cardColor">
                         <div class="card-body">
                             <h3> Dinner </h3>
-                            {{patientDaily['dinner']}}
+                            <p *ngFor="let daily of getDailyFood('Dinner')">
+                                Dish : {{daily.dish_name}}
+                                <br>
+                                Serving : {{daily.serving}}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -113,9 +133,9 @@
     
                             <input type="text" 
                             class="form-control" 
-                            id="comment" 
+                            id="message" 
                             placeholder="Leave a comment"
-                            formControlName="comment">
+                            formControlName="message">
     
                         </div>
     
