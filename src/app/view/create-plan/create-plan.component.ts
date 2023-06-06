@@ -4,7 +4,7 @@ import { CreatePlanService } from 'src/app/controler/Nutritionist/createPlan/cre
 import { ManageDishService } from 'src/app/controler/Shared/manageDish/manage-dish.service';
 import { DishItemI, NewProductI } from 'src/app/model/Admin/approve-product';
 import { GetDailyI, PlanI } from 'src/app/model/Nutritionist/create-plan';
-import { mealTimes, products } from 'src/app/setValues';
+import { mealTimes} from 'src/app/setValues';
 
 @Component({
   selector: 'app-create-plan',
