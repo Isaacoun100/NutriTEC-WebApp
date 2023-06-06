@@ -1,4 +1,7 @@
 import { DishItemI, PaymentI, UnnaprovedProductsI } from "./Admin/approve-product";
+import { CommentI } from "./Client/load-comments";
+import { ProgressReportI } from "./Client/report";
+import { DailyFoodI } from "./Nutritionist/follow-up";
 import { NutriClientsI, PlansI } from "./Nutritionist/get-nutri";
 import { newClientI } from "./Nutritionist/search-client";
 
@@ -37,5 +40,15 @@ export interface ResponseTemplateListUnnaprovedI {
 export interface ResponseTemplateListProductI {
     status: string;
     result: DishItemI[];
+}
+
+export interface ResponseTemplateListDailyI {
+    status: string;
+    result: DailyFoodI[];
+}
+
+export interface ResponseTemplateListProgressI {
+    status: string;
+    result: ProgressReportI[];
 }
 
