@@ -1,1 +1,74 @@
-<p>progress-report works!</p>
+<body>
+    
+    <app-sidebar-client></app-sidebar-client>
+
+    <div class="container">
+
+        <form [formGroup]="progressForm" (ngSubmit)="getProgress(progressForm.getRawValue())">
+
+            <div class="row py-3">
+
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-sm-12 p-2">
+                    
+                    <label for="start_date">Start Date</label>
+                    <input 
+                    type="date"
+                    class="form-control"
+                    id="start_date"
+                    formControlName="start_date">
+                    
+                </div>
+                
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-sm-12 p-2">
+                    
+                    <label for="end_date">End Date</label>
+                    <input 
+                    type="date"
+                    class="form-control"
+                    id="end_date"
+                    formControlName="end_date">
+                    
+                </div>
+
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-sm-12 py-2 vcenter">
+
+                    <button type="submit" class="btn btn-primary">Get Progress Report</button>
+                    
+                </div>
+
+            </div>
+
+        </form>
+
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Weight</th>
+                    <th scope="col">Waist</th>
+                    <th scope="col">Neck</th>
+                    <th scope="col">Hip</th>
+                    <th scope="col">Muscle Percentage</th>
+                    <th scope="col">Fat Percentage</th>
+                  </tr>
+                </thead>
+                <tbody>      
+                    <tr *ngFor="let clientReport of clientReports">
+                        <th scope="row">{{clientReport.date}}</th>
+                        <td >{{clientReport.weight}}</td>
+                        <td>{{clientReport.waist}}</td>
+                        <td>{{clientReport.neck}}</td>
+                        <td>{{clientReport.hip}}</td>
+                        <td>{{clientReport.muscle_percentage}}</td>
+                        <td>{{clientReport.fat_percentage}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+</body>

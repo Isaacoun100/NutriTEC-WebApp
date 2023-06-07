@@ -1,1 +1,158 @@
-<p>create-plan works!</p>
+<body>
+    
+    <app-sidebar-nutri></app-sidebar-nutri>
+
+    <div class="container">
+
+        <form [formGroup]="newPlan" (ngSubmit)="addPlan(newPlan.getRawValue())">
+    
+            <div class="row">
+                
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-2">
+                    
+                    <div class="py-4">
+
+                        <label for="Name">Plan Name</label>
+                        <input type="text" 
+                        class="form-control" 
+                        id="plan_name" 
+                        formControlName="plan_name">
+                    
+                    </div>
+
+                    <div class="py-4">
+
+                        <label for="Name">Meal Type</label>
+                        <select class="form-select" #meal_type>
+                            <option [disabled]="true">Select Meal Type</option>
+                            <option *ngFor="let meal of mealTimes" [ngValue]="meal">
+                                {{meal}}
+                            </option>
+                        </select>
+                        
+                    </div>
+
+                </div>
+                
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 py-4">
+
+                    <form [formGroup]="searchForm" (ngSubmit)="searchProduct(searchForm.getRawValue())">
+
+                        <div class="row">
+
+                            <div class="col-xxl-9 col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9 py-2">
+    
+                                <label for="product">Search </label>
+                                <input type="text" 
+                                class="form-control" 
+                                id="product" 
+                                formControlName="product">
+                            
+                            </div>
+    
+                            <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 py-2">
+
+                                <label for=""></label>
+                                <button type="submit" class="btn btn-primary">
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                    </svg>
+
+                                </button>
+    
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                    <ul class="list-group overflow-auto shadow" style="max-height: 207px;">
+                        <div *ngFor="let product of products; let i=index">
+
+                            <li class="list-group-item">
+                                <h4>
+                                    <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="setCurrentProduct(i)">
+                                        {{product.product_name}}
+                                    </a>
+                                </h4>
+                            </li>
+                            
+                        </div>
+
+                    </ul>
+
+                </div>
+
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 py-5">
+
+                    <ul class="list-group overflow-auto shadow" style="max-height: 272px;">
+
+                        <table class="table table-striped">
+
+                            <thead>
+                                <tr>
+                                  <th scope="col">ID</th>
+                                  <th scope="col">Product</th>
+                                  <th scope="col">Size (g/ml)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <tr *ngFor="let plan of plans; let i=index">
+                                    <th scope="row">{{plan.get('barcode')?.value}}</th>
+                                    <td>{{plan.get('product')?.value}}</td>
+                                    <td>{{plan.get('size')?.value}}</td>
+                                </tr>
+    
+                            </tbody>
+                            
+                        </table>
+                    
+                    </ul>
+
+                </div>
+
+                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 py-3 center">
+                    <button class="btn btn-success" type="submit">Create New Plan</button>
+                </div>
+
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Please indicate the portion size</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <form [formGroup]="sizeForm">
+
+                            <div class="modal-body">
+                    
+                                <input 
+                                type="number" 
+                                class="form-control"
+                                id="sizeInput"
+                                formControlName="sizeInput"
+                                #sizeInput>
+                            </div>
+
+                        </form>
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>              
+                            <button type="button" class="btn btn-primary" (click)="addProduct( sizeInput.value, meal_type );" data-bs-dismiss="modal">Register</button>                  
+                        </div>               
+                    </div>
+                </div>
+            </div>
+            
+        </form>
+    
+    </div>
+
+</body>

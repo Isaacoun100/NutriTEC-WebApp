@@ -28,6 +28,9 @@ import { NavbarComponent } from './view/navbar/navbar.component';
 import { SidebarAdminComponent } from './view/sidebar-admin/sidebar-admin.component';
 import { SidebarClientComponent } from './view/sidebar-client/sidebar-client.component';
 import { SidebarNutriComponent } from './view/sidebar-nutri/sidebar-nutri.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -60,9 +63,88 @@ import { SidebarNutriComponent } from './view/sidebar-nutri/sidebar-nutri.compon
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot([{ path: '', component: HomeComponent }]),
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule.forRoot([
+      { 
+        path: '', 
+        component: HomeComponent 
+      },
+      {
+        path: 'login-admin',
+        component: LoginAdminComponent
+      },
+      {
+        path: 'login-nutri',
+        component: LoginNutriComponent
+      },
+      {
+        path: 'login-client',
+        component: LoginClientComponent
+      },
+      {
+        path: 'register-client',
+        component: RegisterClientComponent
+      },
+      {
+        path: 'add-nutri',
+        component: AddNutriComponent
+      },
+      {
+        path: 'nutri-hub',
+        component: NutriHubComponent
+      },
+      {
+        path: 'add-product',
+        component: AddProductComponent
+      },
+      {
+        path: 'manage-dish',
+        component: ManageDishComponent
+      },
+      {
+        path: 'patient-search',
+        component: SearchClientComponent
+      },
+      {
+        path: 'assign-plan',
+        component: AssignPlanComponent
+      },
+      {
+        path: 'create-plan',
+        component: CreatePlanComponent
+      },
+      {
+        path: 'patient-follow-up',
+        component: ClientFollowUpComponent
+      },
+      {
+        path: 'client-hub',
+        component: ClientHubComponent
+      },
+      {
+        path: 'add-measurement',
+        component: AddMeasurementComponent
+      },
+      {
+        path: 'daily-intake',
+        component: DailyIntakeComponent
+      },
+      {
+        path: 'progress-report',
+        component: ProgressReportComponent
+      },
+      {
+        path: 'approved-products',
+        component: ApprovedProductsComponent
+      },
+      {
+        path: 'pay-report',
+        component: PayReportComponent
+      }
+    ]),
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

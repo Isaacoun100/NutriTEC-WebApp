@@ -1,1 +1,44 @@
-<p>pay-report works!</p>
+<body>
+    
+    <app-sidebar-admin></app-sidebar-admin>
+
+    <div class="container py-4">
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Billing Type</th>
+                        <th scope="col">Nutri Email</th>
+                        <th scope="col">Nutri Fullname</th>
+                        <th scope="col">Credit Card</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Discount</th>
+                        <th scope="col">Payment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let payReport of payReports">
+                        <th scope="row">{{payReport['billing_type']}}</th>
+                        <td >{{payReport['nutri_email']}}</td>
+                        <td >{{payReport['nutri_fullname']}}</td>
+                        <td >{{payReport['credit_card']}}</td>
+                        <td >{{payReport['total']}}</td>
+                        <td >{{payReport['discount']}}</td>
+                        <td >{{payReport['payment']}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row py-4">
+            
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                <button class="btn btn-primary">Export to PDF</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
