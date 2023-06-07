@@ -15,6 +15,9 @@ export class PatientSearchService {
   
   constructor(private http: HttpClient) {}
   
+  /**
+   * @description Error handler for the searchClient and assignClient methods
+   */
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       
@@ -40,6 +43,10 @@ export class PatientSearchService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
   
+  /**
+   * @description Method to search a client in the application using the following link
+   * @link BD_ULR + search_patient
+   */
   searchClient(form : SearchClientI): Observable<ResponseTemplateListClientI>{
     let direccion = this.BD_URL + 'search_patient';
     return this.http.post<ResponseTemplateListClientI>(direccion, form).pipe(
@@ -47,6 +54,11 @@ export class PatientSearchService {
       );
   }
 
+
+  /**
+   * @description Method to assign a client to a nutritionist in the application using the following link
+   * @link BD_ULR + associate_client
+   */
   assignClient(form : AssociateClientI): Observable<ResponseTemplateI>{
     let direccion = this.BD_URL + 'associate_client';
     return this.http.post<ResponseTemplateI>(direccion, form).pipe(

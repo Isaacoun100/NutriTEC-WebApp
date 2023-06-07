@@ -10,12 +10,18 @@ import { AddMeasurementsI } from 'src/app/model/Client/add-measurements';
 })
 export class AddMeasurementComponent {
 
+  /**
+   * @description constructor for AddMeasurementComponent
+   */
   constructor( private api : AddMeasurementService) {
     this.measurementForm.controls['client_id'].setValue(
       JSON.parse(String(sessionStorage.getItem('client')))['email']
     );
    }
 
+  /**
+   * @description form group for add measurement
+   */
   measurementForm = new FormGroup({
     client_id : new FormControl('', Validators.required),
     date : new FormControl('', Validators.required),
@@ -27,6 +33,9 @@ export class AddMeasurementComponent {
     fat_percentage : new FormControl('0', Validators.required)
   });
 
+  /**
+   * @description function to add measurement
+   */
   addMeasurement(form : AddMeasurementsI) {
 
     this.api.addMeasuments(form).subscribe(data => {

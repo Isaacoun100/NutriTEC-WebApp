@@ -14,6 +14,9 @@ export class LoginClientService {
   
   constructor(private http: HttpClient) {}
   
+  /**
+   * @description Error handler for the loginClient method
+   */
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       
@@ -39,6 +42,10 @@ export class LoginClientService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
+  /**
+   * @description Sends a POST request to the server to login a client using the link
+   * @link BD_ULR + auth_client
+   */
   loginClient(form : LoginClientI): Observable<ResponseTemplateI>{
     let direccion = this.BD_URL + 'auth_client';
     return this.http.post<ResponseTemplateI>(direccion, form).pipe(

@@ -24,6 +24,9 @@ export class DailyIntakeComponent {
       product : new FormControl('', Validators.required)
     })];
 
+    /**
+     * @description Constructor that injects the API's we are going to use.
+     */
     constructor( private apiDish : ManageDishService,
       private apiIntake : DailyIntakeService){
         this.dailyIntakeForm.controls['client_id'].setValue(
@@ -31,6 +34,9 @@ export class DailyIntakeComponent {
         );
       }
       
+    /**
+     * @description This is the form we use to store to search for a product.
+     */
     searchForm = new FormGroup({
       product : new FormControl('', Validators.required)
      });
@@ -52,17 +58,25 @@ export class DailyIntakeComponent {
   });
 
 
-
+  /**
+   * @description This is the form we use to store the size of the product.
+   */
   sizeForm = new FormGroup({
     sizeInput : new FormControl(0, Validators.required)
   });
 
+  /**
+   * @description Using this method we will search for a product using the API.
+   */
   searchProduct(form : NewProductI) {
     this.apiDish.searchDish(form).subscribe(data => {
       this.products = data.result;
     });
   }
 
+  /**
+   * @description Using this method we will add a new formGroup to the plans list, this is to later insert the list into the form array
+   */
   addIntake( form : AddDailyI) {
 
     console.log(this.plans)
@@ -131,6 +145,9 @@ export class DailyIntakeComponent {
 
   }
 
+  /**
+   * @description Using this method we will remove a formGroup from the plans list, this is to later insert the list into the form array
+   */
   setCurrentProduct( index : number) {
     console.log("Current product: ");
     console.log(index);

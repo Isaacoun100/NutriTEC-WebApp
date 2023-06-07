@@ -15,6 +15,9 @@ export class ManageDishComponent {
 
   products : DishItemI[] = [];
 
+  /**
+   * @description Constructor that injects the API's we are going to use.
+   */
   constructor( private apiDish : ManageDishService){}
 
   ingredients = [
@@ -24,10 +27,16 @@ export class ManageDishComponent {
       product : new FormControl('', Validators.required)
   })];
 
+  /**
+   * @description This is the form we use to store to search for a product.
+   */
   searchForm = new FormGroup({
     product : new FormControl('', Validators.required)
   });
 
+  /**
+   * @description This is the form we use to store the data the user inputs.
+   */
   newDish = new FormGroup({
     dish_name : new FormControl('', Validators.required),
     ingredients : new FormArray([
@@ -38,22 +47,34 @@ export class ManageDishComponent {
     ])
   });
 
+  /**
+   * @description This is the form we use to store the size of the product.
+   */
   sizeForm = new FormGroup({
     sizeInput : new FormControl(0, Validators.required)
   });
 
+  /**
+   * @description This function is used to search for a product.
+   */
   searchProduct(form : NewProductI) {
     this.apiDish.searchDish(form).subscribe(data => {
       this.products = data.result;
     });
   }
 
+  /**
+   * @description This function is used to add a product to the plan.
+   */
   addDish( form : DishI) {
     this.apiDish.addDish(form).subscribe(data => {
       alert('Dish added successfully');
     });
   }
 
+  /**
+   * @description This function is used to add a product to the plan.
+   */
   addProduct(size : any){
     console.log(Number(size));
 
@@ -102,6 +123,9 @@ export class ManageDishComponent {
   }
 
 
+  /**
+   * @description This function is used to remove a product from the plan.
+   */
   setCurrentProduct( index : number) {
     console.log("Current product: ");
     console.log(index);

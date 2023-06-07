@@ -14,6 +14,9 @@ export class DailyIntakeService {
   
   constructor(private http: HttpClient) {}
   
+  /**
+   * @description Error handler for the addDailyIntake method
+   */
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       
@@ -39,6 +42,10 @@ export class DailyIntakeService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
+  /**
+   * @description Sends a POST request to the server to add a daily intake using the following link
+   * @link BD_ULR + add_daily_intake
+   */
   addDailyIntake(form : AddDailyI): Observable<ResponseTemplateI>{
     let direccion = this.BD_URL + 'add_daily_intake';
     return this.http.post<ResponseTemplateI>(direccion, form).pipe(

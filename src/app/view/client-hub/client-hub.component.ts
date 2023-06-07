@@ -13,6 +13,9 @@ export class ClientHubComponent {
   patientDaily : DailyFoodI[] = [];
   comments : CommentI[] = [];
 
+  /**
+   * @description constructor for the client hub component, here www load the comments and the daily food
+   */
   constructor( private api : ClientHubService ) {
       
     this.api.loadComments({client : this.getSessionStorage('email') }).subscribe( data => {
@@ -27,6 +30,9 @@ export class ClientHubComponent {
 
   }
 
+  /**
+   * @description this function returns the daily food for a specific time
+   */
   getDailyFood(time : string) {
 
     const food : DailyFoodI[] = [];
@@ -40,6 +46,9 @@ export class ClientHubComponent {
     return food;
   }
 
+  /**
+   * @description this function returns the session storage for a specific key
+   */
   getSessionStorage( key : string ) {
     return JSON.parse( sessionStorage.getItem('client') || '{}')[key];
   }

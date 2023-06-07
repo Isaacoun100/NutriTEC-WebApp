@@ -12,6 +12,9 @@ export class SearchClientComponent {
 
   patients : newClientI[] = [];
 
+  /**
+   * @description Constructor that injects the API's we are going to use.
+   */
   constructor( private api : PatientSearchService ) { }
 
   searchForm = new FormGroup({
@@ -23,6 +26,9 @@ export class SearchClientComponent {
     nutritionist_id : new FormControl('', Validators.required)
   });
 
+  /**
+   * @description This function is used to parse the data we get from the API.
+   */
   parsePatients(list : newClientI[]){
     
     for (let index = 0; index < list.length; index++) {
@@ -31,6 +37,9 @@ export class SearchClientComponent {
 
   }
 
+  /**
+   * @description This function is used to search for a patient.
+   */
   searchPatient(form : SearchClientI) {
 
     this.patients = [];
@@ -43,6 +52,9 @@ export class SearchClientComponent {
     
   }
 
+  /**
+   * @description This function is used to assign a patient to a nutritionist.
+   */
   assignPatient(email : string | null) {
 
     this.NewForm.controls['client_email'].setValue(email);

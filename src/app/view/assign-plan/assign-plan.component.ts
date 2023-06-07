@@ -13,6 +13,9 @@ export class AssignPlanComponent implements OnInit{
   patients : NutriClientsI[] = [];
   plans : PlansI[] = [];
 
+  /**
+   * @description constructor for AssignPlanComponent
+   */
   assignForm = new FormGroup({
     email_client : new FormControl('', Validators.required),
     plan_name : new FormControl('', Validators.required),
@@ -20,8 +23,14 @@ export class AssignPlanComponent implements OnInit{
     end_date : new FormControl('', Validators.required)
   });
 
+  /**
+   * @description constructor for AssignPlanComponent
+   */
   constructor( private api : AssignPlanService ){}
 
+  /**
+   * @description function to assign plan
+   */
   assignPlan(form : any) {
     
     console.log(form);
@@ -32,6 +41,9 @@ export class AssignPlanComponent implements OnInit{
     
   }
 
+  /**
+   * @description function to update patients and plans
+   */
   ngOnInit(): void {
 
     const nutritionist : GetNutriClientsI = {'nutritionist_id': JSON.parse(String(sessionStorage.getItem('nutri')))['nutri_code']};

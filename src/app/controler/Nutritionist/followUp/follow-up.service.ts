@@ -16,7 +16,10 @@ export class FollowUpService {
   Mongo_URL = Mongo_URL;
   
   constructor(private http: HttpClient) {}
-  
+
+  /**
+   * @description Error hanlder for the loadPatientInfo and leaveComment methods
+   */
   private handleErrorFollowUp(error: HttpErrorResponse) {
     if (error.status === 0) {
       
@@ -42,6 +45,10 @@ export class FollowUpService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
+  /**
+   * @description Send the client information and logins to the backend using the following link
+   * @link BD_ULR + patient_follow_up
+   */
   loadPatientInfo(form : GetDailyI): Observable<ResponseTemplateListDailyI>{
     let direccion = this.BD_URL + 'patient_follow_up';
     return this.http.post<ResponseTemplateListDailyI>(direccion, form).pipe(
@@ -49,6 +56,10 @@ export class FollowUpService {
       );
   }
 
+  /**
+   * @description Leaves a comments in the patient's daily intake using the following link
+   * @link https://nutritecapifeedback.azurewebsites.net/api//add_feedback
+   */
   leaveComment(form : FeedbackI): Observable<ResponseTemplateI>{
     let direccion = this.Mongo_URL + 'add_feedback';
     return this.http.post<ResponseTemplateI>(direccion, form).pipe(

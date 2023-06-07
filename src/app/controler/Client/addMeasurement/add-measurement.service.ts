@@ -14,6 +14,9 @@ export class AddMeasurementService {
   
   constructor(private http: HttpClient) {}
   
+  /**
+   * @description Error handler for the addMeasurement method
+   */
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       
@@ -39,6 +42,10 @@ export class AddMeasurementService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
+  /**
+   * @description Method to add measurements to the database using the following link
+   * @link BD_ULR + add_measurement
+   */
   addMeasuments(form : AddMeasurementsI): Observable<ResponseTemplateI>{
     let direccion = this.BD_URL + 'add_measurement';
 

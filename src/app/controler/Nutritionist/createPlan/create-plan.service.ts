@@ -13,7 +13,10 @@ export class CreatePlanService {
   BD_URL = BD_URL;
   
   constructor(private http: HttpClient) {}
-  
+
+  /**
+   * @description This function handles the error messages for the createPlan method
+   */
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       
@@ -39,6 +42,10 @@ export class CreatePlanService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
+  /**
+   * @description This method creates a plan for a patient and returns a response template using the following link
+   * @link https://nutritecapifeedback.azurewebsites.net/api/create_plan
+   */
   createPlan(form : GetDailyI ): Observable<ResponseTemplateI>{
     let direccion = this.BD_URL + 'create_plan';
     return this.http.post<ResponseTemplateI>(direccion, form).pipe(

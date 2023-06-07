@@ -1,9 +1,8 @@
-import { FeedbackI } from 'src/app/model/Nutritionist/add-feedback';
 import { Mongo_URL, BD_URL } from './../../../setValues';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError, Observable, catchError } from 'rxjs';
-import { ResponseTemplateI, ResponseTemplateListDailyI } from 'src/app/model/responseTemplate';
+import { ResponseTemplateListDailyI } from 'src/app/model/responseTemplate';
 import { DailyPlanI, LoadPlanI } from 'src/app/model/Client/load-plan';
 import { CommentI } from 'src/app/model/Client/load-comments';
 

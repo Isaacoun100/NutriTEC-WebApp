@@ -18,12 +18,18 @@ export class ProgressReportComponent {
     );
   }
 
+  /**
+   * @description This is the form we use to store the data the user inputs.
+   */
   progressForm = new FormGroup({
     client_id : new FormControl('', Validators.required),
     start_date : new FormControl('', Validators.required),
     end_date : new FormControl('', Validators.required)
   });
 
+  /**
+   * @description This method is used to get the progress report
+   */
   getProgress(form : GenerateReportI) {
 
     console.log(form);

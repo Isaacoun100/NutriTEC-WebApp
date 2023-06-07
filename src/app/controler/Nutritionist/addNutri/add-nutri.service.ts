@@ -13,7 +13,10 @@ export class AddNutriService {
   BD_URL = BD_URL;
   
   constructor(private http: HttpClient) {}
-  
+
+  /**
+   * @description This function handles the error messages for the addNutri method
+   */
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       
@@ -39,6 +42,10 @@ export class AddNutriService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
+  /**
+   * @description This function sends a request to the API to add a nutritionist using the following link
+   * @link https://nutritecapifeedback.azurewebsites.net/api/add_nutritionist
+   */
   AddNutri(form : CreateNutriI): Observable<ResponseTemplateI>{
     let direccion = this.BD_URL + 'add_nutritionist';
     return this.http.post<ResponseTemplateI>(direccion, form).pipe(

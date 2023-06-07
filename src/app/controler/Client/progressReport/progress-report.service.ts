@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError, Observable, catchError } from 'rxjs';
 import { GenerateReportI } from 'src/app/model/Client/report';
-import { ResponseTemplateI, ResponseTemplateListProgressI } from 'src/app/model/responseTemplate';
+import { ResponseTemplateListProgressI } from 'src/app/model/responseTemplate';
 import { BD_URL } from 'src/app/setValues';
 
 @Injectable({
@@ -14,6 +14,9 @@ export class ProgressReportService {
   
   constructor(private http: HttpClient) {}
   
+  /**
+   * @desciption Error handler for the progress Report service
+   */
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       
@@ -39,6 +42,10 @@ export class ProgressReportService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
+  /**
+   * @description Sends a request to the server to get the progress report using the following link
+   * @link BD_ULR + generate_report
+   */
   getProgressReport(form : GenerateReportI): Observable<ResponseTemplateListProgressI>{
     let direccion = this.BD_URL + 'generate_report';
     return this.http.post<ResponseTemplateListProgressI>(direccion, form).pipe(

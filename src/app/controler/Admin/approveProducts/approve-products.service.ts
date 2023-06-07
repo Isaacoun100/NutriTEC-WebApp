@@ -15,6 +15,9 @@ export class ApproveProductsService {
   
   constructor(private http: HttpClient) {}
   
+  /**
+   * @description Error handler for the getUnnaprovedProducts and approveProduct methods
+   */
   private handleErrorProducts(error: HttpErrorResponse) {
     if (error.status === 0) {
       
@@ -40,6 +43,9 @@ export class ApproveProductsService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
+  /**
+   * @description Error handler for the deleteProduct method
+   */
   private handleErrorManage(error: HttpErrorResponse) {
     if (error.status === 0) {
       
@@ -66,6 +72,10 @@ export class ApproveProductsService {
   }
 
 
+  /**
+   * @description This method requests all of the unapproved products from the API using the following link
+   * @link BD_ULR + get_unapproved_products
+   */
   getUnnaprovedProducts(): Observable<ResponseTemplateListUnnaprovedI>{
     let direccion = this.BD_URL + 'get_unapproved_products';
     return this.http.get<ResponseTemplateListUnnaprovedI>(direccion).pipe(
@@ -73,6 +83,10 @@ export class ApproveProductsService {
       );
   }
 
+  /**
+   * @description this method sends a product to the API to be approved using the following link
+   * @link BD_ULR + approve_product
+   */
   approveProduct(form : ProductI): Observable<ResponseTemplateI>{
     let direccion = this.BD_URL + 'approve_product ';
     return this.http.post<ResponseTemplateI>(direccion, form).pipe(
@@ -80,6 +94,10 @@ export class ApproveProductsService {
       );
   }
 
+  /**
+   * @description this method sends a product to the API to be deleted using the following link
+   * @link BD_ULR + delete_product
+   */
   deleteProduct(form : ProductI): Observable<ResponseTemplateI>{
     let direccion = this.BD_URL + 'delete_product';
     return this.http.post<ResponseTemplateI>(direccion, form).pipe(

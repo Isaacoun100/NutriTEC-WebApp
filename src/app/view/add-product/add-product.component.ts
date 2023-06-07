@@ -16,6 +16,9 @@ export class AddProductComponent {
   vitamins = vitamins;
   parentSelector: boolean = false;
 
+  /**
+   * @description This is the form we use to store the data the user inputs.
+   */
   productForm = new FormGroup({
     name: new FormControl('', Validators.required),
     size: new FormControl(0, Validators.required),
@@ -31,6 +34,9 @@ export class AddProductComponent {
     ])
   });
 
+  /**
+   * @description This method is used to add the vitamins to the form.
+   */
   addVitamins(){
 
     this.productForm.controls['vitamins'].clear();
@@ -45,6 +51,9 @@ export class AddProductComponent {
 
   }
 
+  /**
+   * @description This method is used to add a new product.
+   */
   addProduct (form : AddProductI) {
 
     console.log(form);
@@ -53,8 +62,12 @@ export class AddProductComponent {
       alert('Product added successfully');
     });
     
-    }
+  }
 
+
+  /**
+   * @description This method is used to select the vitamins.
+   */
   onChangeFood($event: any) {
     const vitamin = $event.target.value;
     const isChecked = $event.target.checked;

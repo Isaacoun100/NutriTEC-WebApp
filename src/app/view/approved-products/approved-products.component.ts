@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApproveProductsService } from 'src/app/controler/Admin/approveProducts/approve-products.service';
-import { ProductI, UnnaprovedProductsI } from 'src/app/model/Admin/approve-product';
+import { UnnaprovedProductsI } from 'src/app/model/Admin/approve-product';
 
 @Component({
   selector: 'app-approved-products',
@@ -13,8 +13,14 @@ export class ApprovedProductsComponent implements OnInit {
 
   unnaprovedProducts : UnnaprovedProductsI[] = [];
 
+  /**
+   * @description constructor for ApprovedProductsComponent
+   */
   constructor( private api: ApproveProductsService ) {}
 
+  /**
+   * @description function to delete product
+   */
   deleteProduct(){
 
     console.log( "Deleting "+ this.unnaprovedProducts[this.currentProduct].name + "..." )
@@ -34,6 +40,9 @@ export class ApprovedProductsComponent implements OnInit {
     
   }
 
+  /**
+   * @description function to approve product
+   */
   approveProduct(){
     console.log( "Approving "+ this.unnaprovedProducts[this.currentProduct].name + "..." );
 
@@ -50,15 +59,24 @@ export class ApprovedProductsComponent implements OnInit {
 
   }
 
+  /**
+   * @description function to set current product
+   */
   setCurrentProduct(index : number){
     this.currentProduct = index;
     console.log(this.currentProduct);
   }
 
+  /**
+   * @description function to get current product
+   */
   ngOnInit(): void {
     this.updateProducts();
   }
 
+  /**
+   * @description function to update products
+   */
   updateProducts(){
     this.api.getUnnaprovedProducts().subscribe((data) => {
       console.log(data);

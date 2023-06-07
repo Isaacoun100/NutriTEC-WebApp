@@ -14,6 +14,9 @@ export class LoginNutriService {
   
   constructor(private http: HttpClient) {}
 
+  /**
+   * @description Error handling for the loginNutri method
+   */
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       
@@ -39,6 +42,10 @@ export class LoginNutriService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
+  /**
+   * @description Method to login a nutritionist in the application using the following link
+   * @link BD_ULR + auth_nutritionist
+   */
   loginNutri(form : LoginNutriI): Observable<ResponseTemplateI>{
     let direccion = this.BD_URL + 'auth_nutritionist';
     return this.http.post<ResponseTemplateI>(direccion, form).pipe(

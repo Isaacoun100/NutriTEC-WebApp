@@ -8,13 +8,17 @@ import { Component, OnInit } from '@angular/core';
 export class NutriHubComponent implements OnInit {
 
   nutri = "{}";
-  
-  constructor() { }
 
+  /**
+   * @description Fills the JSON Nutri with the user data
+   */
   ngOnInit(): void { 
       this.nutri = String(sessionStorage.getItem('nutri'));
   }
 
+  /**
+   * @description This method is used to get the nutritionist data
+   */
   getNutri(){
     return JSON.parse(this.nutri);
   }

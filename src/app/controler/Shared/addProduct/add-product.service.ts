@@ -14,6 +14,9 @@ export class AddProductService {
   
   constructor(private http: HttpClient) {}
   
+  /**
+   * @description Error handler for the addProduct method
+   */
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       
@@ -39,6 +42,10 @@ export class AddProductService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
+  /**
+   * @description Method in charge of adding a product to the database using the following link
+   * @link BD_URL + 'add_product'
+   */
   addProduct(form : AddProductI): Observable<ResponseTemplateI>{
     let direccion = this.BD_URL + 'add_product';
     return this.http.post<ResponseTemplateI>(direccion, form).pipe(

@@ -14,6 +14,9 @@ export class LoginAdminService {
   
   constructor(private http: HttpClient) {}
   
+  /**
+   * @description Error handler for the loginAdmin method
+   */
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       
@@ -39,6 +42,10 @@ export class LoginAdminService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
+  /**
+   * @description Sends a POST request to the server to login an admin using the link
+   * @link BD_ULR + auth_admin
+   */
   loginAdmin(form : LoginAdminI): Observable<ResponseTemplateI>{
     let direccion = this.BD_URL + 'auth_admin';
     return this.http.post<ResponseTemplateI>(direccion, form).pipe(

@@ -32,7 +32,9 @@ export class CreatePlanComponent {
      product : new FormControl('', Validators.required)
     });
     
-  // The meal_time should be individual for each dish
+  /**
+   * @description This is the form we use to store the data the user inputs.
+   */
   newPlan = new FormGroup({
     plan_name : new FormControl('', Validators.required),
     nutritionist_id : new FormControl('', Validators.required),
@@ -45,23 +47,35 @@ export class CreatePlanComponent {
     ])
   });
 
+  /**
+   * @description This is the form we use to store the size of the product.
+   */
   sizeForm = new FormGroup({
     sizeInput : new FormControl(0, Validators.required)
   });
 
+  /**
+   * @description Constructor that injects the API's we are going to use.
+   */
   constructor( private apiPlan : CreatePlanService,
     private apiDish : ManageDishService){
       this.newPlan.controls['nutritionist_id'].setValue(
         JSON.parse(String(sessionStorage.getItem('nutri'))).nutri_code
         );
-    }
+  }
 
+  /**
+   * @description This method is used to add a new product.
+   */
   searchProduct(form : NewProductI) {
     this.apiDish.searchDish(form).subscribe(data => {
       this.products = data.result;
     });
   }
 
+  /**
+   * @description This method is used to add a new plan
+   */
   addPlan( form : GetDailyI) {
 
     console.log(form);
@@ -71,6 +85,9 @@ export class CreatePlanComponent {
       });
   }
 
+  /**
+   * @description This method is used to add a new product.
+   */
   addProduct(size : any, meal_type : any){
 
     console.log(Number(size));
@@ -124,6 +141,9 @@ export class CreatePlanComponent {
   }
 
 
+  /**
+   * @description This method is used to set the current product
+   */
   setCurrentProduct( index : number) {
     console.log("Current product: ");
     console.log(index);

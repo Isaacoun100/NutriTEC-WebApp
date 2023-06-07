@@ -11,12 +11,21 @@ export class PayReportComponent implements OnInit{
 
   payReports : PaymentI[] = [];
 
+  /**
+   * @description function to generate PDF
+   */
   exportPDF(form : any) {
     console.log(form);
   }
 
+  /**
+   * @description Constructor that injects the API's we are going to use.
+   */
   constructor( private api : PayReportService ) { }
 
+  /**
+   * @description Fill the payReports array with the data from the API
+   */
   ngOnInit(): void {
     this.api.generateAdminReport().subscribe((data) => {
       console.log(data);

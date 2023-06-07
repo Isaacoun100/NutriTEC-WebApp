@@ -15,6 +15,9 @@ export class ManageDishService {
   
   constructor(private http: HttpClient) {}
   
+  /**
+   * @description Error handler for the seatchDish method
+   */
   private handleErrorDish(error: HttpErrorResponse) {
     if (error.status === 0) {
       
@@ -39,7 +42,10 @@ export class ManageDishService {
 
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
-
+  
+  /**
+   * @description Error handler for the addProduct method
+   */
   private handleErrorProduct(error: HttpErrorResponse) {
     if (error.status === 0) {
       
@@ -65,6 +71,10 @@ export class ManageDishService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
+  /**
+   * @description Method in charge of adding a product to the database using the following link
+   * @link BD_URL + 'add_product'
+   */
   addDish(form : DishI): Observable<ResponseTemplateI>{
     let direccion = this.BD_URL + 'add_dish';
     return this.http.post<ResponseTemplateI>(direccion, form).pipe(
@@ -72,6 +82,10 @@ export class ManageDishService {
       );
   }
 
+  /**
+   * @description Method in charge of adding a product to the database using the following link
+   * @link BD_URL + 'search_dish'
+   */
   searchDish(form : NewProductI): Observable<ResponseTemplateListProductI>{
     let direccion = this.BD_URL + 'search_dish ';
     return this.http.post<ResponseTemplateListProductI>(direccion, form).pipe(

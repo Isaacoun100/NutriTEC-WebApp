@@ -68,6 +68,9 @@ export class ClientFollowUpComponent implements OnInit  {
 
   }
 
+  /**
+   * @description This method is used to loads the consumption of set client
+   */
   getDailyFood(time : string) {
 
     const food : DailyFoodI[] = [];

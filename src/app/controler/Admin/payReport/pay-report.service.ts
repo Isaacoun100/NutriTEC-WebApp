@@ -13,6 +13,9 @@ export class PayReportService {
   
   constructor(private http: HttpClient) {}
   
+  /**
+   * @description Error handler for the generateAdmonReport method
+   */
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       
@@ -38,6 +41,10 @@ export class PayReportService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
+  /**
+   * @description Sends a GET request to the server to get the payment reports using the link
+   * @link BD_ULR + generate_admin_report
+   */
   generateAdminReport(): Observable<ResponseTemplateListReportI>{
     let direccion = this.BD_URL + 'generate_admin_report';
     return this.http.get<ResponseTemplateListReportI>(direccion).pipe(

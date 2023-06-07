@@ -37,7 +37,6 @@ export class AddNutriComponent {
 
   /**
    * @description This method is used to create a new Nutri
-   * @param form 
    */
   createNewNutri(form : CreateNutriI) {
 

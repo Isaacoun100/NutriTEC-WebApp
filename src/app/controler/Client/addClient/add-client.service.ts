@@ -14,6 +14,9 @@ export class AddClientService {
   
   constructor(private http: HttpClient) {}
   
+  /**
+   * @description Error handler for the addClient method
+   */
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       
@@ -39,6 +42,10 @@ export class AddClientService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
   
+  /**
+   * @description Sends a POST request to the server to add a client using the link
+   * @link BD_ULR + add_client
+   */
   addClient(form : AddClientI): Observable<ResponseTemplateI>{
     let direccion = this.BD_URL + 'add_client';
     return this.http.post<ResponseTemplateI>(direccion, form).pipe(
