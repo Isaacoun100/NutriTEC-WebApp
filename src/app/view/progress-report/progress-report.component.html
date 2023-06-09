@@ -15,7 +15,8 @@
                     type="date"
                     class="form-control"
                     id="start_date"
-                    formControlName="start_date">
+                    formControlName="start_date"
+                    #startDate>
                     
                 </div>
                 
@@ -26,7 +27,8 @@
                     type="date"
                     class="form-control"
                     id="end_date"
-                    formControlName="end_date">
+                    formControlName="end_date"
+                    #endDate>
                     
                 </div>
 
@@ -67,6 +69,12 @@
                 </tbody>
             </table>
 
+        </div>
+
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-sm-12 py-2 vcenter">
+
+            <a class="btn btn-primary" href="{{getPDF()}}">Get PDF</a>
+            
         </div>
 
     </div>
