@@ -39,4 +39,17 @@ export class ProgressReportComponent {
     });
   }
 
+  getPDF() : string {
+
+    if( this.progressForm.controls['start_date'].value != '' && this.progressForm.controls['end_date'].value != '' ){
+      return ('https://nutritec-api.azurewebsites.net/api/create_pdf_report/'+
+      String(this.progressForm.controls['client_id'].value).replace('@','%40') + '/' +
+      this.progressForm.controls['start_date'].value + '/' +
+      this.progressForm.controls['end_date'].value );
+    }
+    else{
+      return 'http://localhost:4200/progress-report';
+    }
+  }
+
 }
